@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AVATAR-BOOKING</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{/css/datepicker3.css}" rel="stylesheet">
+	<link th:href="@{/css/styles.css}" rel="stylesheet">
+	
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="#"><span>Avatar</span>Booking</a>
+				
+					
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<div class="profile-sidebar">
+			<div class="profile-userpic">
+				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+			</div>
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name">Username</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="divider"></div>
+		
+		<div class="form-group">
+				<th:block th:each="persone : ${adminName}">
+		<tr>
+										   <h2  th:text="${persone.username}"></h2></tr>
+		</th:block>
+				
+			</div>
+		
+		
+		<ul class="nav menu">
+			<li><a th:href="@{'/admin/HomeAdmin'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
+			<li ><a th:href="@{'/admin/avatarAdmin'}"><em class="glyphicon glyphicon-user">&nbsp;</em> Avatar</a></li>
+			<li class="active"><a th:href="@{'/admin/userAdmin'}"><em class=" glyphicon glyphicon-user">&nbsp;</em> User</a></li>
+			<li><a th:href="@{'/admin/bookingAdmin'}"><em class="glyphicon glyphicon-file">&nbsp;</em> Booking</a></li>
+			<li><a href="https://myaccount.google.com/"><em class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
+			
+			
+			<li><a th:href="@{'/login'}"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+		</ul>
+			
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">User</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<center><h1 class="page-header">USER</h1></center>
+			</div>
+		</div><!--/.row-->
+		
+			<div class="row">
+			<div class="panel panel-default">
+				<div class="text-center">
+				  <img src="/image/logo.png" class=" img-circle"  alt="Responsive image">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+					<div class="col-xs-3"></div>
+
+
+	  			<form role="search">
+	  				
+							<div  class="form-group col-xs-6" >
+								<input type="text" id="myInput" onkeyup="search()" class="form-control" placeholder="Search">
+							</div>
+						
+					</form>
+						
+		    </div>
+		    <div class="row">
+		    	
+		    	
+		    	<div class="col-xs-12 ">
+		    	
+		    	
+		    	<table class="table table-striped" id="personeTable">
+										  <tr>
+										    <th>UserName</th>
+										    <th>Email</th>
+										    <th>Date Of Birth</th>
+										     <th>Phone Number</th>
+										     <th>Role</th>
+										      <th>Gender</th>
+										     <th>Country</th>
+										    <th>Action</th>
+										  </tr>
+										  <th:block th:each="persone : ${lists}">
+										  <tr>
+										   <td th:text="${persone.username}"></td>
+										   <td th:text="${persone.email}"></td>
+										   <td th:text="${persone.date}"></td>
+										   <td th:text="${persone.numtel}"></td>
+										    <td th:text="${persone.role}"></td>
+										   <td th:text="${persone.gender}"></td>
+										   <td th:text="${persone.country}"></td>
+										    
+										    <td>
+										        
+										         <a  th:href="@{/ViewUser(id=${persone.id})}"><span class="glyphicon glyphicon-eye-open color-teal" aria-hidden="true">VIEW</span></a>
+										       
+										        
+										        
+										    </td>
+										  </tr>
+										  </th:block>
+										</table>
+		    	
+		    	
+		    	
+		    		
+		    	</div>
+		    </div>
+
+
+
+
+	
+			<div class="col-sm-12">
+				<p class="back-link">Application By <a href="https://www.xtend.com">Xtend</a></p>
+			</div>
+		</div><!--/.row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>	<!--/.main-->
+	  
+
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/chart.min.js"></script>
+	<script src="/js/chart-data.js"></script>
+	<script src="/js/easypiechart.js"></script>
+	<script src="/js/easypiechart-data.js"></script>
+	<script src="/js/bootstrap-datepicker.js"></script>
+	<script src="/js/custom.js"></script>
+	<script src="/js/datatable.js"></script>
+	<script>
+	window.onload = function () {
+	var chart1 = document.getElementById("line-chart").getContext("2d");
+	window.myLine = new Chart(chart1).Line(lineChartData, {
+	responsive: true,
+	scaleLineColor: "rgba(0,0,0,.2)",
+	scaleGridLineColor: "rgba(0,0,0,.05)",
+	scaleFontColor: "#c5c7cc"
+	});
+	var chart2 = document.getElementById("bar-chart").getContext("2d");
+	window.myBar = new Chart(chart2).Bar(barChartData, {
+	responsive: true,
+	scaleLineColor: "rgba(0,0,0,.2)",
+	scaleGridLineColor: "rgba(0,0,0,.05)",
+	scaleFontColor: "#c5c7cc"
+	});
+	var chart3 = document.getElementById("doughnut-chart").getContext("2d");
+	window.myDoughnut = new Chart(chart3).Doughnut(doughnutData, {
+	responsive: true,
+	segmentShowStroke: false
+	});
+	var chart4 = document.getElementById("pie-chart").getContext("2d");
+	window.myPie = new Chart(chart4).Pie(pieData, {
+	responsive: true,
+	segmentShowStroke: false
+	});
+	var chart5 = document.getElementById("radar-chart").getContext("2d");
+	window.myRadarChart = new Chart(chart5).Radar(radarData, {
+	responsive: true,
+	scaleLineColor: "rgba(0,0,0,.05)",
+	angleLineColor: "rgba(0,0,0,.2)"
+	});
+	var chart6 = document.getElementById("polar-area-chart").getContext("2d");
+	window.myPolarAreaChart = new Chart(chart6).PolarArea(polarData, {
+	responsive: true,
+	scaleLineColor: "rgba(0,0,0,.2)",
+	segmentShowStroke: false
+	});
+};
+	</script>	
+</body>
+</html>
