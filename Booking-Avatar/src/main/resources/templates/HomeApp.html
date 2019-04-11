@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/image/ico/apple-touch-icon-144-precomposed.png}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/image/ico/apple-touch-icon-114-precomposed.png}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/image/ico/apple-touch-icon-72-precomposed.png}">
-    <link rel="apple-touch-icon-precomposed" th:href="@{/image/ico/apple-touch-icon-57-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{'/image/ico/apple-touch-icon-57-precomposed.png'}">
     <style type="">
     	
         .gapp{
@@ -35,6 +35,8 @@
     		font-size:50px;
 
     	}
+    	#main-slider{
+    	background-image: url("/image/slider-bg.jpg");}
 
 
 
@@ -54,28 +56,31 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="AVATARBOOKING" th:href="@{/HomeApp}"><span>Avatar</span>Booking</a>
-                    
-                </div>
+                    </div>
+                
 
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#main-slider"><i class="icon-home"></i></a></li>
+                        <li class="active"><a href="#main-slider">          <img src="/image/house.png"   alt="Responsive image"></a></li>
                         
-                        <li><a href="#portfolio">Présentation</a></li>
-                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">                   <img src="/image/presentation.png"   alt="Responsive image">       Présentation</a></li>
+                        <li><a href="#services">                   <img src="/image/feedback.png"   alt="Responsive image">       Services</a></li>
                         
                         
-                        <li><a href="#contact">Contact</a></li>
-                          
-							
-                        
-                    </ul >
+                        <li><a href="#contact">               <img src="/image/contacts.png"   alt="Responsive image">        Contact</a></li>
+                         </ul> 
+						
+						<ul class="nav navbar-top-links navbar-right">
+                      <li>  <a th:href="@{'/registration'}"><img src="/image/browser.png"   alt="Responsive image">Registration</a></li>
+                      <li><a th:href="@{'/login'}"><img src="/image/login.png"   alt="Responsive image">Login</a></li>	
+                    </ul>
                     
-                         
+                        
                 </div>
                 
-            </div>
+           
             
+        </div>
         </div>
     </header><!--/#header-->
 

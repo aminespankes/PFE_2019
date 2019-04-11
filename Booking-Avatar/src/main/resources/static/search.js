@@ -15,15 +15,16 @@ GET: $(document).ready(
 							$('#tbhead').append("	<tr><th scope='col'>UserName</th><th scope='col'>Email</th><th scope='col'>Country</th><th scope='col'>City</th><th scope='col'>Phone Number</th><th scope='col'></th></tr>");
 							$('#utilisateurtable').empty();
 							$('#utilisateurs').empty();
-							var custList = "";
 							$.each(result.data,
 									function(i, users) {
+								
 										var tableInit= "<tr><th scope='row'>"+users.username+"</th><td>"
+												
 												+ users.email+"</td><td>"
 												+ users.country+"</td><td>"
 												+ users.city+"</td><td>"
 												+ users.numtel+"</td><td>"
-												+ "<a class='btn btn-success btn-circle'>View</a><a class='btn btn-danger btn-circle'>next</a></td>"
+												+ "<a class='btn btn-success btn-circle'  href='/user/ViewAVA?id="+users.id+"' >View</a><a  href='/user/FormulaireRes' class='btn btn-primary'>Next</a></td>"
                    										 
                  										 
 												+ "</tr>";
@@ -51,9 +52,5 @@ GET: $(document).ready(
 				};
 			});
 		});
-
-
-
-
 
 

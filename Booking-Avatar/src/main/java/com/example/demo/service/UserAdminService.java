@@ -8,6 +8,6 @@ public interface UserAdminService  {
 	public User findUserByEmail(String email);
 	
 	public void savePersone(User user);
-	User getUserById(int id);
+	public User getUserById(int id);
 
 }

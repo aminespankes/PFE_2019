@@ -42,8 +42,46 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#"><span>Avatar</span>Booking</a>
+				<a class="navbar-brand" th:href="@{'/HomeApp'}"><span>Avatar</span>Booking</a>
+				<ul class="nav navbar-top-links navbar-right">
+			<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<em ><img src="/image/user.png"   alt="Responsive image"></em>
+					</a>
+						<ul class="dropdown-menu dropdown-users">
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+									<img src="/image/user (1).png"   alt="Responsive image"><a th:href="@{'/admin/MyProfile'}">My Profile</a>
+										
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+										<img src="/image/key.png"   alt="Responsive image"><a th:href="@{'/admin/changepass'}">Change Password</a>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+										<img src="/image/logout.png"   alt="Responsive image"><a th:href="@{'/login'}">Sign out</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
 				
+				</ul>
 				
 			</div>
 		</div><!-- /.container-fluid -->
@@ -77,7 +115,7 @@
 			<li><a href="https://myaccount.google.com/"><em class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
 			
 			
-			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		

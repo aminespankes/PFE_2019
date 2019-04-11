@@ -42,9 +42,47 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#"><span>Avatar</span>Booking</a>
+				<a class="navbar-brand" th:href="@{'/HomeApp'}"><span>Avatar</span>Booking</a>
+					
+				<ul class="nav navbar-top-links navbar-right">
+			<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<em ><img src="/image/user.png"   alt="Responsive image"></em>
+					</a>
+						<ul class="dropdown-menu dropdown-users">
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+									<a th:href="@{'/admin/MyProfile'}"><img src="/image/user (1).png"   alt="Responsive image">My Profile</a>
+										
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+										<a th:href="@{'/admin/changepass'}"><img src="/image/key.png"   alt="Responsive image">Change Password</a>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+										<a th:href="@{'/logout'}"><img src="/image/logout.png"   alt="Responsive image">Sign out</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
 				
-				
+				</ul>
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
@@ -64,10 +102,7 @@
 		<div class="divider"></div>
 		
 		<div class="form-group">
-				<th:block th:each="persone : ${adminName}">
-		<tr>
-										   <h2  th:text="${persone.username}"></h2></tr>
-		</th:block>
+				
 				
 			</div>
 		
@@ -77,16 +112,16 @@
 			<li><a th:href="@{'/admin/userAdmin'}"><em class=" glyphicon glyphicon-user">&nbsp;</em> User</a></li>
 			<li><a th:href="@{'/admin/bookingAdmin'}"><em class="glyphicon glyphicon-file">&nbsp;</em> Booking</a></li>
 			<li><a href="https://myaccount.google.com/"><em class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
+			<li><a th:href="@{'/admin/addAdmin'}"><i class="fa  fa-user-plus" aria-hidden="true">&nbsp;</i>Add Admin</a></li>
 			
-			
-			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+	<div  class="col-sm-6 col-sm-offset-3 col-lg-7  col-lg-offset-3 main">
 	 <form id="viewPersoneInformationForm" th:object="${lists}">
         <div>
-            <h2 style="font-size: 2.5em" >Information about the AVATAR</h2>
+         <h2 style="font-size: 2.5em" >Information about the AVATAR</h2>
             
         </div>
 		
@@ -94,8 +129,8 @@
 <table class="table table-striped">
   
   <tr>
-      <th>Image</th>
-      <td><img th:src="@{${'/img/'+lists.image}"  class="img-thumbnail"></td>
+      <th></th>
+     <td><img  th:src="@{${'/img/'+lists.image}}"  class="img-rounded" style="width:200px;"/></td>
     </tr>
   <tr>
       <th>userName</th>
