@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.List;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -34,6 +34,7 @@ import com.example.demo.service.AvatarAdminService;
 import com.example.demo.service.PersoneService;
 import com.example.demo.service.PersoneServiceImpl;
 import com.example.demo.service.UserAdminService;
+import com.example.demo.service.adminService;
 
 @Controller
 public class AdminHome {
@@ -57,6 +58,8 @@ public class AdminHome {
 	UserAdminService userAdminService;
 	@Autowired
 	adminRepository adminrepository ;
+	@Autowired
+	adminService adminservice;
 	
 	
 	@Autowired
@@ -64,8 +67,9 @@ public class AdminHome {
         this.personeService = personeService;
     }
 	
+
 	
-	
+	/*-----------------------------cnx-----------------------*/
 	@RequestMapping("/default")
 	public String defaultAfterLogin(HttpServletRequest request) {
 		if (request.isUserInRole("Admin")) {
@@ -73,13 +77,13 @@ public class AdminHome {
 		}
 		else
 			if(request.isUserInRole("Avatar"))
-		return "redirect:/avatar/HomeAvatar";
+		return "redirect:/avatar/avatarHome";
 			else
 				return "redirect:/user/userHome";
 }
 	
 	
-	
+	/*-----------------------------Home Admin-----------------------*/
 	@RequestMapping(value="/admin/HomeAdmin", method = RequestMethod.GET)
 	public ModelAndView HomeAdmin(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -94,7 +98,7 @@ public class AdminHome {
 		return modelAndView;
 	}
 	
-	
+	/*-----------------------------avatarAdmin-----------------------*/
 	@RequestMapping(value="/admin/avatarAdmin", method = RequestMethod.GET)
 	public ModelAndView avatarAdmin(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -106,7 +110,8 @@ public class AdminHome {
 	}
 	
 	
-	
+	/*-----------------------------userAdmin-----------------------*/
+
 	
 	@RequestMapping(value="/admin/userAdmin", method = RequestMethod.GET)
 	public ModelAndView userAdmin(){
@@ -118,7 +123,8 @@ public class AdminHome {
 		
 	}
 	
-	
+	/*-----------------------------BookingAdmin-----------------------*/
+
 	
 	@RequestMapping(value="/admin/bookingAdmin", method = RequestMethod.GET)
 	public ModelAndView bookingAdmin(){
@@ -132,7 +138,8 @@ public class AdminHome {
 	
 	
 	
-	
+	/*-----------------------------View-----------------------*/
+
 	
 	@RequestMapping("/View")
     public String showPersone(@RequestParam("id") int id, Model model) {
@@ -140,12 +147,16 @@ public class AdminHome {
         return "admin/View";
     }
 	
+	/*-----------------------------ViewAdminAvatar-----------------------*/
+
 	@RequestMapping("/ViewAvatar")
     public String showAvatar(@RequestParam("id") int id, Model model) {
         model.addAttribute("lists", avatarAdminService.getAvatarById(id));
         return "admin/ViewAvatar";
     }
 	
+	/*-----------------------------ViewAdminUser-----------------------*/
+
 	@RequestMapping("/ViewUser")
     public String showUser(@RequestParam("id") int id, Model model) {
         model.addAttribute("lists", userAdminService.getUserById(id));
@@ -154,7 +165,8 @@ public class AdminHome {
 	
 	
 	
-	
+	/*-----------------------------delete-----------------------*/
+
 	@RequestMapping("/delete")
 	public String deleteCustomerForm(@RequestParam("id") int id) {
 		personeRepository.deleteById(id);
@@ -162,7 +174,8 @@ public class AdminHome {
 	}
 	
 	
-	
+	/*-----------------------------AcceptInscription-----------------------*/
+
 	
 	@RequestMapping(value="/add")
 	public String edit(@RequestParam("id") int id,ModelMap model)
@@ -222,6 +235,12 @@ public class AdminHome {
 		
 		
 	}*/
+	
+	
+	
+	
+	
+	
 		
 		
 		

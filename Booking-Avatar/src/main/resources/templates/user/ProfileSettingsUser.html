@@ -19,9 +19,14 @@
 
 
 <style type="text/css">
-	#map {
-        width: 100%;
-        height: 325px;
+	
+        #titleUSer{
+        color:#00BFFF;
+        font-size:250%;
+        font-family:verdana;
+        text-align:center;
+        }
+        
 </style>
 
 </head>
@@ -33,13 +38,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#"><span>Avatar</span>Booking</a>
+				<a class="navbar-brand" th:href="@{'/HomeApp'}"><span>Avatar</span>Booking</a>
 
 
 
-					<ul class="nav navbar-top-links navbar-right">
+						<ul class="nav navbar-top-links navbar-right">
 					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-						<em class="fa fa-envelope"></em><span class="label label-danger">15</span>
+						<em class="fa fa-envelope "></em><span class="label label-danger">15</span>
 					</a>
 						<ul class="dropdown-menu dropdown-messages">
 							<li>
@@ -69,41 +74,48 @@
 							</li>
 						</ul>
 					</li>
+					
 					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-						<em class="fa fa-bell"></em><span class="label label-info">5</span>
+						<em ><img src="/image/user.png"   alt="Responsive image"></em>
 					</a>
-						<ul class="dropdown-menu dropdown-alerts">
-							<li><a href="#">
-								<div><em class="fa fa-envelope"></em> 1 New Message
-									<span class="pull-right text-muted small">3 mins ago</span></div>
-							</a></li>
+						<ul class="dropdown-menu dropdown-users">
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+									<a th:href="@{'/user/MyProfile'}"><img src="/image/user (1).png"   alt="Responsive image">My Profile</a>
+										
+									</div>
+								</div>
+							</li>
 							<li class="divider"></li>
-							<li><a href="#">
-								<div><em class="fa fa-heart"></em> 12 New Likes
-									<span class="pull-right text-muted small">4 mins ago</span></div>
-							</a></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+										<a th:href="@{'/user/changepass'}"><img src="/image/key.png"   alt="Responsive image">Change Password</a>
+									</div>
+								</div>
+							</li>
 							<li class="divider"></li>
-							<li><a href="#">
-								<div><em class="fa fa-user"></em> 5 New Followers
-									<span class="pull-right text-muted small">4 mins ago</span></div>
-							</a></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+										<a href="/logout"><img src="/image/logout.png"   alt="Responsive image">Sign out</a>
+									</div>
+								</div>
+							</li>
 						</ul>
 					</li>
-				</ul>
+					
+		
+		</ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-				
+			
 				
 			</div>
 		</div><!-- /.container-fluid -->
@@ -127,9 +139,28 @@
 		<ul class="nav menu">
 			<li ><a th:href="@{'/user/userHome'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
 			
-			<li ><a th:href="@{'/user/bookingUser'}"><em class="glyphicon glyphicon-file">&nbsp;</em> Booking</a></li>
-			<li><a th:href="@{'/user/cancellationUser'}"><em class="glyphicon glyphicon-remove">&nbsp;</em> Cancellation</a></li>
-			<li class="active"><a><em class="glyphicon glyphicon-wrench">&nbsp;</em> Profile Settings</a></li>
+			
+			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+				<em class="fa fa-navicon">&nbsp;</em> Booking <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li><a class="" th:href="@{'/user/bookingUser'}">
+						<img src="/image/checkmark-for-verification.png"   alt="Responsive image">&nbsp; Booking Accepted 
+					</a></li>
+					<li><a class="" th:href="@{'/user/BookingPending'}">
+						<img src="/image/hourglass.png"   alt="Responsive image">&nbsp; Booking Pending
+					</a></li>
+					<li><a class="" th:href="@{'/user/Bookinghistorical'}">
+						<img src="/image/medical-report.png"   alt="Responsive image">&nbsp; historical 
+					</a></li>
+					<li><a class="" th:href="@{'/user/cancellationUser'}">
+							<img src="/image/cancel.png"   alt="Responsive image">&nbsp; Cancellation
+					</a></li>
+				</ul>
+			
+			</li>
+			 <th:block th:each="user : ${user}"></th:block>
+			<li class="active">  <a th:href="@{'/ProfileSettingsUser/'}"><em class="glyphicon glyphicon-wrench">&nbsp;</em> Profile Settings</a></li>
 			
 			<li><a href="https://myaccount.google.com/"><em class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
 			
@@ -150,54 +181,57 @@
 		
 		
 		
-		
+	<div class="row">
+				
 		
 
 	<div class="row">
-			<center><h2>User settings </h2></center>
+	<div class="col-lg-5  col-sm-offset-4 col-sm-5 ">
+				<div class="panel panel-default">
+			<center><h2 id="titleUSer"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i>Profile settings </h2></center>
 
-			<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+</div></div>
+			<div class="col-sm-7 col-sm-offset-3  ">
 	    <div>
 	    
-                <form action="/update" methode="post">
+                <form th:action="@{/update}" method="post"  th:object="${user}">
+                <div style=" visibility: hidden;">
+                <input type="text"  th:field="*{id}"  th:value="${user.id}"> 
+                </div>
                     <div class="form-group">
                         <label for="email">Name</label>
-                        <input type="text" class="form-control"   />
+                        <input type="text" class="form-control" th:field="*{name}"   th:value="${user.name}" />
                     </div>
                      <div class="form-group">
                         <label for="email">Image</label>
-                        <textarea class="form-control"  type="url" th:value="${user.image}"></textarea>
+                        <input class="form-control"  type="File"  th:field="*{image}" th:value="${user.image}" />
                     </div>
                     <div class="form-group">
                         <label for="email">Phone Number</label>
-                        <input type="text" class="form-control"  th:value="${user.numtel}" />
+                        <input type="text" class="form-control" th:field="*{numtel}" th:value="${user.numtel}" />
                     </div>
                     <div class="form-group">
                         <label for="email">Country</label>
-                        <input type="text" class="form-control"  th:value="${user.country}" />
+                        <input type="text" class="form-control" th:field="*{country}" th:value="${user.country}" />
                     </div>
                     <div class="form-group">
                         <label for="email">City</label>
-                        <input type="text" class="form-control" th:value="${user.city}" />
+                        <input type="text" class="form-control" th:field="*{city}" th:value="${user.city}" />
                     </div>
                     <div class="form-group">
                         <label for="email">Street</label>
-                        <input type="text" class="form-control"  th:value="${user.street}" />
+                        <input type="text" class="form-control"  th:field="*{street}" th:value="${user.street}" />
                     </div>
                     <div class="form-group">
                         <label for="email">Code Zip</label>
-                        <input type="text" class="form-control"  th:value="${user.zip}" />
+                        <input type="text" class="form-control"  th:field="*{zip}" th:value="${user.zip}" />
                     </div>
-                    <div class="form-group">
-                        <label for="email">Street</label>
-                        <input type="text" class="form-control"  th:value="${user.street}" />
                     
-                    th:value="${user.name}"
-                    </div>-->
                     
                    
-                    <button type="submit" class="btn btn-success">Save</button>
-                </form>
+                <center><button type="submit" class="btn btn-md btn-primary">Save</button></center><br>
+                <br>
+                </form><br>
         
     </div>
 </div>
@@ -205,6 +239,7 @@
 
 
 	</div>	<!--/.main-->
+
 	
 	<script src="/js/jquery-1.11.1.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

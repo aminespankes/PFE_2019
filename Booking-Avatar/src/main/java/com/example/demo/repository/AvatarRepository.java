@@ -14,5 +14,7 @@ public interface AvatarRepository extends JpaRepository<Avatar, Integer>{
 	@Query(value = "SELECT * FROM avatar WHERE email LIKE CONCAT('%',?1,'%') OR username LIKE CONCAT('%',?1,'%') OR city LIKE CONCAT('%',?1,'%')  OR country LIKE CONCAT('%',?1,'%')"
 			, nativeQuery = true)
 	List<Avatar> findLike(String email);//
+	Avatar findById(int id);
+	
 
 }

@@ -27,6 +27,12 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<style type="text/css">
+	
+        
+        
+</style>
+	
 </head>
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -38,8 +44,47 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>Avatar</span>Booking</a>
-
+				<a class="navbar-brand" th:href="@{'/HomeApp'}"><span>Avatar</span>Booking</a>
+	
+				<ul class="nav navbar-top-links navbar-right">
+			<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<em ><img src="/image/user.png"   alt="Responsive image"></em>
+					</a>
+						<ul class="dropdown-menu dropdown-users">
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+									<a th:href="@{'/admin/MyProfile'}"><img src="/image/user (1).png"   alt="Responsive image">My Profile</a>
+										
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+										<a th:href="@{'/admin/changepass'}"><img src="/image/key.png"   alt="Responsive image">Change Password</a>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+										<a th:href="@{'/logout'}"><img src="/image/logout.png"   alt="Responsive image">Sign out</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+				
+				</ul>
 			</div>
 		</div>
 		<!-- /.container-fluid -->
@@ -63,10 +108,7 @@
 		</div>
 		<div class="divider"></div>
 		<div class="form-group">
-				<th:block th:each="persone : ${adminName}">
-		<tr>
-										   <h2  th:text="${persone.username}"></h2></tr>
-		</th:block>
+				
 				
 			</div>
 		<ul class="nav menu">
@@ -80,9 +122,9 @@
 					class="glyphicon glyphicon-file">&nbsp;</em> Booking</a></li>
 			<li><a href="https://myaccount.google.com/"><em
 					class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
+<li><a th:href="@{'/admin/addAdmin'}"><i class="fa  fa-user-plus" aria-hidden="true">&nbsp;</i>Add Admin</a></li>
 
-
-			<li><a th:href="@{'/login'}"><em class="fa fa-power-off">&nbsp;</em>
+			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
 		</ul>
 	</div>
@@ -101,7 +143,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<center>
-					<h1 class="page-header">AVATAR</h1>
+					<h1 class="page-header" id="titleUSer">AVATAR</h1>
 				</center>
 			</div>
 		</div>
@@ -158,8 +200,8 @@
 							<td th:text="${persone.gender}"></td>
 							<td th:text="${persone.country}"></td>
 
-							<td><a th:href="@{/ViewAvatar(id=${persone.id})}"><span
-									class="glyphicon glyphicon-eye-open color-teal"
+							<td><a  class='btn btn-success btn-circle'  th:href="@{/ViewAvatar(id=${persone.id})}"><span
+									
 									aria-hidden="true">VIEW</span></a></td>
 						</tr>
 					</th:block>

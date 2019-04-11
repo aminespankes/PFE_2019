@@ -27,10 +27,7 @@ public class LoginController {
 	@Autowired
 	private PersoneService personeService;
 	
-	/*@Autowired
-	private PersoneServiceImpl personeServiceImpl;
-	@Autowired
-	AppCrudRepo appcrudrepo;*/
+	
 
 	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){

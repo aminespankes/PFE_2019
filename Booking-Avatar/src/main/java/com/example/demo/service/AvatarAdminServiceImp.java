@@ -36,6 +36,11 @@ public class AvatarAdminServiceImp implements AvatarAdminService {
 		}
 		return utilisateurs ;
 	}
+
+	@Override
+	public Avatar findAvatarByEmail(String email) {
+		return avatarRepository.findByEmail(email);
+	}
 	
 
 	

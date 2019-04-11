@@ -103,7 +103,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 							.antMatchers("/admin/HomeAdmin/**")
 							.hasRole("Admin")
 							
-							.antMatchers("/avatar/HomeAvatar/**")
+							.antMatchers("/avatar/avatarHome/**")
 							.hasRole("Avatar")
 							
 							

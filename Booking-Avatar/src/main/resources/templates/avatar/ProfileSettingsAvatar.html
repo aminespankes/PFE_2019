@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AVATAR - BOOKING</title>
+	<link  th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<link  th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+	<link  th:href="@{/css/datepicker3.css}" rel="stylesheet">
+	<link th:href="@{/css/styles.css}" rel="stylesheet">
+	
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/search.js"></script>
+
+
+<style type="text/css">
+	
+        #titleUSer{
+    
+        font-size:250%;
+        
+        text-align:center;
+        }
+        
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+				<a class="navbar-brand" th:href="@{'/HomeApp'}"><span>Avatar</span>Booking</a>
+
+
+
+					<ul class="nav navbar-top-links navbar-right">
+					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<em class="fa fa-envelope "></em><span class="label label-danger">15</span>
+					</a>
+						<ul class="dropdown-menu dropdown-messages">
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
+									</a>
+									<div class="message-body"><small class="pull-right">3 mins ago</small>
+										<a href="#"><strong>John Doe</strong> commented on <strong>your photo</strong>.</a>
+									<br /><small class="text-muted">1:24 pm - 25/03/2015</small></div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
+									</a>
+									<div class="message-body"><small class="pull-right">1 hour ago</small>
+										<a href="#">New message from <strong>Jane Doe</strong>.</a>
+									<br /><small class="text-muted">12:27 pm - 25/03/2015</small></div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="all-button"><a href="#">
+									<em class="fa fa-inbox"></em> <strong>All Messages</strong>
+								</a></div>
+							</li>
+						</ul>
+					</li>
+					
+					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<em ><img src="/image/user.png"   alt="Responsive image"></em>
+					</a>
+						<ul class="dropdown-menu dropdown-users">
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+									<a th:href="@{'/avatar/MyProfile'}"><img src="/image/user (1).png"   alt="Responsive image">My Profile</a>
+										
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+										<a th:href="@{'/avatar/changepass'}"><img src="/image/key.png"   alt="Responsive image">Change Password</a>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									
+									</a>
+									<div >
+										<a href="/logout"><img src="/image/logout.png"   alt="Responsive image">Sign out</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+					
+		
+		</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+				
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+
+
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<div class="profile-sidebar">
+			<div class="profile-userpic">
+				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+			</div>
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name"><span th:text="${username}" ></span></div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="divider"></div>
+		<div class="form-group">
+				
+				
+			</div>
+		
+		
+
+		<ul class="nav menu">
+			<li ><a th:href="@{'/avatar/userHome'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
+		
+			
+			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+				<em class="fa fa-navicon">&nbsp;</em> Booking <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li><a class="" th:href="@{'/avatar/bookingAccepted'}">
+						<img src="/image/checkmark-for-verification.png"   alt="Responsive image">&nbsp; Booking Accepted 
+					</a></li>
+					<li><a class="" th:href="@{'/avatar/bookingPending'}">
+						<img src="/image/hourglass.png"   alt="Responsive image">&nbsp; Booking Pending
+					</a></li>
+					<li><a class="" th:href="@{'/avatar/bookingHistorique'}">
+						<img src="/image/medical-report.png"   alt="Responsive image">&nbsp; historical 
+					</a></li>
+					
+				</ul>
+			
+			</li>
+			
+	
+			<li class="active">  <a th:href="@{'/ProfileSettingsAvatar/'}"><em class="glyphicon glyphicon-wrench">&nbsp;</em> Profile Settings</a></li>
+			
+			<li><a href="https://myaccount.google.com/"><em class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
+			
+			
+			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+		</ul>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">Profile Settings</li>
+			</ol>
+		</div><!--/.row-->
+		
+		
+		
+
+	<div class="row">
+			
+		<div class="row">
+	<div class="col-lg-5  col-sm-offset-4 col-sm-5 ">
+				<div class="panel panel-default">
+			<center><h2 id="titleUSer"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i>Profile settings </h2></center>
+
+</div></div>
+			<div class="col-sm-7 col-sm-offset-3  ">
+	    <div>
+	    
+                <form th:action="@{/update1}" method="post"  th:object="${avatar}">
+                <div style=" visibility: hidden;">
+                <input type="text"  th:field="*{id}"  th:value="${avatar.id}"> 
+                </div>
+                    <div class="form-group">
+                        <label for="email">Name</label>
+                        <input type="text" class="form-control" th:field="*{name}"   th:value="${avatar.name}" />
+                    </div>
+                     <div class="form-group">
+                        <label for="email">Image</label>
+                        <input class="form-control"  type="File"  th:field="*{image}" th:value="${avatar.image}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Phone Number</label>
+                        <input type="text" class="form-control" th:field="*{numtel}" th:value="${avatar.numtel}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Country</label>
+                        <input type="text" class="form-control" th:field="*{country}" th:value="${avatar.country}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">City</label>
+                        <input type="text" class="form-control" th:field="*{city}" th:value="${avatar.city}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Street</label>
+                        <input type="text" class="form-control"  th:field="*{street}" th:value="${avatar.street}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Code Zip</label>
+                        <input type="text" class="form-control"  th:field="*{zip}" th:value="${avatar.zip}" />
+                    </div>
+                    
+                    
+                   
+                <center><button type="submit" class="btn btn-md btn-primary">Save</button></center><br>
+                <br>
+                </form><br>
+        
+    </div>
+</div>
+</div>				
+				
+		
+ 											
+</div>
+
+
+	</div>	<!--/.main-->
+	
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/chart.min.js"></script>
+	<script src="/js/chart-data.js"></script>
+	<script src="/js/easypiechart.js"></script>
+	<script src="/js/easypiechart-data.js"></script>
+	<script src="/js/bootstrap-datepicker.js"></script>
+	<script src="/js/custom.js"></script>
+
+
+
+
+	
+		
+</body>
+</html>>

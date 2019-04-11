@@ -62,11 +62,7 @@ public  class PersoneServiceImpl implements PersoneService{
 			if(persone.getActive()==2)
 			{
         
-        persone.setActive(2);
-        Regi personeRegi2 = roleRepository.findByRegi("User");
-        persone.setRegis(new HashSet<Regi>(Arrays.asList(personeRegi2)));
-        personeRepository.save(persone);}
-			else
+       
 	*/		
 				personeRepository.save(persone);
 	}
