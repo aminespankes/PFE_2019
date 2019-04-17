@@ -112,7 +112,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 							
 								.and()
 			.authorizeRequests()
-				.antMatchers("/css/**","/fonts/**","image/**","/js/**","/table/**","/registration/**","/HomeApp")//autrisé l'acces lel les url hethom sans passe pas l'etape de login 
+				.antMatchers("/css/**","/fonts/**","image/**","/js/**","/table/**","/img/**","/registration/**","/HomeApp")//autrisé l'acces lel les url hethom sans passe pas l'etape de login 
 					.permitAll()
 						.anyRequest()
 							.authenticated()

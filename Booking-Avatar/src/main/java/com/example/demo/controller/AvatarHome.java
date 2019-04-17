@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.model.Avatar;
+import com.example.demo.model.Booking;
 import com.example.demo.model.User;
 import com.example.demo.repository.AvatarRepository;
+import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.AvatarAdminService;
+import com.example.demo.service.BookingService;
 import com.example.demo.service.UserAdminService;
 
 @Controller
@@ -35,37 +38,72 @@ public class AvatarHome {
 		AvatarAdminService avatarAdminService;
 		@Autowired
 		AvatarRepository avatarRepository;
+		@Autowired
+		BookingService bookingService;
+		@Autowired
+		BookingRepository bookingRepository;
 		
 		/*--------------------------------Avatar-Home------------------------------*/
 		@GetMapping(value="/avatar/avatarHome")
-		public ModelAndView avatarHome(){
+		public ModelAndView avatarHome(@ModelAttribute("booking") Booking booking,HttpServletRequest request){
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			Principal principal= request.getUserPrincipal();
 
 			ModelAndView modelAndView = new ModelAndView();
 			
 			modelAndView.setViewName("/avatar/avatarHome");
 			Avatar avatar = avatarAdminService.findAvatarByEmail(auth.getName());
 			modelAndView.addObject("username", avatar.getUsername());
-			
+			modelAndView.addObject("booking" , bookingRepository.find1(principal.getName()));
 			return modelAndView;
 		}
 		
 
 		/*--------------------------------Booking Accepted-------------------------------*/
-		@RequestMapping(value="/avatar/bookingAccepted", method = RequestMethod.GET)
-		public ModelAndView bookingAccepted(){
+		@GetMapping(value="/avatar/bookingAccepted")
+		public ModelAndView bookingAccepted(HttpServletRequest request){
 			ModelAndView modelAndView = new ModelAndView();
+			Principal principal= request.getUserPrincipal();
+			
+			//Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			//User user = userAdminService.findUserByEmail(auth.getName());
+			//modelAndView.addObject("username", user.getUsername());
+			
+			modelAndView.addObject("bookingacceptavatar" , bookingRepository.findacceptavatar(principal.getName()));
 			modelAndView.setViewName("/avatar/bookingAccepted");
 			
 			return modelAndView;
 			
 		}
 		
+/*-------------------------------------Accept--------------------------*/
+
+			@GetMapping(value="/acceptbookingavatar")
+			 public ModelAndView acceptbookingavatar(@ModelAttribute("booking") Booking b ) {
+				
+
+				 Booking booking=bookingService.getBookingById(b.getId());
+				booking.setActive(1);
+				
+				
+				bookingService.saveBooking(booking);
+				return new ModelAndView("redirect:/avatar/avatarHome");
+			}
+		
+		
+		
+		
+		
+		
+		
 		/*--------------------------------Booking pending-------------------------------*/
 		@RequestMapping(value="/avatar/bookingPending", method = RequestMethod.GET)
-		public ModelAndView bookingpending(){
+		public ModelAndView bookingpending(@ModelAttribute("booking") Booking booking,HttpServletRequest request){
+			Principal principal= request.getUserPrincipal();
 			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("booking" , bookingRepository.find2(principal.getName()));
 			modelAndView.setViewName("/avatar/bookingPending");
+			
 			
 			return modelAndView;
 			
@@ -125,9 +163,9 @@ public class AvatarHome {
 		    }
 		
 		
-			/*--------------------------------Settings compte-------------------------------*/
+			/*--------------------------------Change Password-------------------------------*/ 
 			
-			@GetMapping(value="/ChangePasse/")
+			@GetMapping(value="/avatar/ChangePasse") 
 			    public String editMotPasseAvatar(HttpServletRequest request ,Model model) {
 					Principal principal= request.getUserPrincipal();
 					
@@ -150,7 +188,7 @@ public class AvatarHome {
 					return new ModelAndView("redirect:/avatar/avatarHome");
 				}
 		
-		              
+		             
 		
 		
 		

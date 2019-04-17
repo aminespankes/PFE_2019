@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -27,10 +29,12 @@ import com.example.demo.model.Persone;
 import com.example.demo.model.User;
 import com.example.demo.repository.AppCrudRepo;
 import com.example.demo.repository.AvatarRepository;
+import com.example.demo.repository.BookingRepository;
 import com.example.demo.repository.PersoneRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.adminRepository;
 import com.example.demo.service.AvatarAdminService;
+import com.example.demo.service.BookingService;
 import com.example.demo.service.PersoneService;
 import com.example.demo.service.PersoneServiceImpl;
 import com.example.demo.service.UserAdminService;
@@ -60,8 +64,10 @@ public class AdminHome {
 	adminRepository adminrepository ;
 	@Autowired
 	adminService adminservice;
-	
-	
+	@Autowired
+	BookingRepository bookingRepository;
+	@Autowired
+	BookingService bookingService;
 	@Autowired
     public void setPersoneService(PersoneService personeService) {
         this.personeService = personeService;
@@ -130,13 +136,26 @@ public class AdminHome {
 	public ModelAndView bookingAdmin(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/admin/bookingAdmin");
-		modelAndView.addObject("lists",userRepository.findAll());
+		modelAndView.addObject("lists",bookingRepository.findAll());
 		
 		return modelAndView;
 		
 	}
 	
+/*-----------------------------Bookingview-----------------------*/
+
 	
+	@GetMapping(value="/ViewBooking")
+	public ModelAndView Viewbooking(@RequestParam("id") int id){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/admin/ViewBooking");
+		modelAndView.addObject("lists",bookingService.getBookingById(id));
+		
+		return modelAndView;
+		
+	}
+	
+
 	
 	/*-----------------------------View-----------------------*/
 
@@ -238,6 +257,32 @@ public class AdminHome {
 	
 	
 	
+/*--------------------------------Settings Password-------------------------------*/
+	
+	@GetMapping(value="/admin/changepass")
+	    public String editMotPasseAdmin(HttpServletRequest request ,Model model) {
+			Principal principal= request.getUserPrincipal();
+			
+			model.addAttribute("admin", adminrepository.findByEmail(principal.getName()));
+			
+	        return "admin/changepass";
+	    }
+
+
+/*
+		@PostMapping(value="/update5")
+		 public ModelAndView editPasseAdmin(@ModelAttribute("admin") Admin p ) {
+			
+
+			 Admin admin=adminservice.getAdminById(p.getId());
+			 admin.setPassword(p.getPassword());
+			
+			
+			 adminservice.saveAdmin(admin);
+			return new ModelAndView("redirect:/user/userHome");
+		}
+	
+	*/
 	
 	
 	

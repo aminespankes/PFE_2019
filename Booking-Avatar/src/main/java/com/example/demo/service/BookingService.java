@@ -3,6 +3,8 @@ package com.example.demo.service;
 import java.sql.Time;
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
+
 import com.example.demo.model.Booking;
 
 public interface BookingService {
@@ -21,6 +23,8 @@ public Booking findByEmailavatar(String emailavatar);
 	Booking getBookingById(int id);
 	
 	public void delete(int id);
+	
+	
 	
 	
 

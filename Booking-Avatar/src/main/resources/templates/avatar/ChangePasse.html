@@ -112,8 +112,7 @@
 		
 		</ul>
 
-
-				
+	
 				
 			</div>
 		</div><!-- /.container-fluid -->
@@ -140,7 +139,7 @@
 		
 
 		<ul class="nav menu">
-			<li ><a th:href="@{'/avatar/avatarHome'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
+			<li class="active"><a th:href="@{'/avatar/avatarHome'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
 		
 			
 			<li class="parent active "><a data-toggle="collapse" href="#sub-item-1">
@@ -161,9 +160,7 @@
 			
 			</li>
 			
-			
-		
-			
+
 			
 			<li>  <a th:href="@{'/ProfileSettingsAvatar/'}"><em class="glyphicon glyphicon-wrench">&nbsp;</em> Profile Settings</a></li>
 			
@@ -185,51 +182,46 @@
 		</div><!--/.row-->
 		
 		<br>
-	
+		<br>
 		
 		
 
-	<div class="row">
-			<div class="col-md-1"></div><div class="col-md-10">
-				<div class="panel panel-info">
-					<div class="panel-heading"><center>Bookings Pending</center> </div>
+<div class="row">
+			
+				<div class="col-md-2">	</div>
+		<div class="col-md-8">
+			<div class="panel panel-blue">
+					<div class="panel-heading dark-overlay"><center>Change Password</center></div>
 					<div class="panel-body">
-			<form method="get">
-				 <div class="table-responsive">
-										<table class="table table-striped">
-										  <tr>
-										    <th>user Name</th>
-										    <th>user Email </th>
-										     <th>Phone Number</th>
-										    <th>Date</th>
-										    
-										     <th>Start Time</th>
-										      <th>End Time</th>
-										    <th>Description Of Mission</th>
-										    
-										  </tr>
-										  <th:block th:each="booking : ${booking}">
-										  <tr>
-										   <td th:text="${booking.username}"></td>
-										   <td th:text="${booking.emailuser}"></td>
-										    <td th:text="${booking.userphone}"></td>
-										   <td th:text="${booking.date}"></td>
-										  
-										    <td th:text="${booking.starttime}"></td>
-										   <td th:text="${booking.endtime}"></td>
-										    
-										     <td th:text="${booking.description}"></td>
-										  
-										    
-										    
-										  </tr>
-										  </th:block>
-										</table>
-							</div>
-			</form>	
+						
+						<div class="alert alert-danger" role="alert" th:if="${param.error}">
+					    The password is incorrect!
+					 	</div>
+						<form role="form" onclick="formValidation()" method="get" action="/avatar/ChangePasse">
+								<div class="form-group">
+									<label>Current Password</label>
+									<input type="password" class="form-control" >
+								</div>
+								<div class="form-group">
+									<label>New Password</label>
+									<input id="passid" class="form-control" name="password" >
+							  
+                                </div>		
+                                         
+								
+								<div class="form-group">
+									<label>Confirm New Password</label>
+									<input  name="passid1"  id="passid1" type="password"class="form-control" >
+								</div>
+								
+								<button type="submit" class="btn btn-md btn-success">Save</button><button  type="rest" class="btn btn-md btn-default" >Rest</button>
+						</form>				
+					</div>
 				</div>
-				</div>
-				</div>
+
+	</div>
+				
+				
 		
  											
 </div>

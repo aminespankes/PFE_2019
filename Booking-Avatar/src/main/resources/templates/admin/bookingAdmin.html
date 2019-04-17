@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -112,39 +113,71 @@
 			</div>
 		</div><!--/.row-->
 				
-				<div class="row">
-							<div class="col-md-1">
-
+<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-body tabs">
+						<ul class="nav nav-pills">
+							<li class="active"><a href="#pilltab1" data-toggle="tab">All Booking</a></li>
+							
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane fade in active" id="pilltab1">
+								
+								<div class="table-responsive">
+										<table class="table table-striped">
+										  <tr>
+										    <th>User Name</th>
+										    <th>Avatar Name</th>
+										    <th>Date</th>
+										     <th>Start Time</th>
+										     <th>End Time</th>
+										      <th>Description Of Mission</th>
+										    <th>Action</th>
+										  </tr>
+										  <th:block th:each="booking : ${lists}">
+										  <tr>
+										   <td th:text="${booking.username}"></td>
+										   <td th:text="${booking.avatarname}"></td>
+										   <td th:text="${booking.date}"></td>
+										   <td th:text="${booking.starttime}"></td>
+										    <td th:text="${booking.endtime}"></td>
+										    <td th:text="${booking.description}"></td>
+										  
+										    
+										    <td>
+										        
+										         <a   class='btn btn-success btn-circle' th:href="@{/ViewBooking(id=${booking.id})}"><span   aria-hidden="true">VIEW</span></a>
+										       
+										        
+												
+										    </td>
+										  </tr>
+										  </th:block>
+										</table>
 							</div>
-
-					<div class="col-md-10">
-
-		    		<table class="table table-striped">
-								  <thead class="thead-dark">
-								    <tr>
-								      <th scope="col">#</th>
-								      <th scope="col">ID_avatar</th>
-								      <th scope="col">ID_user</th>
-								      <th scope="col">Dated</th>
-								      <th scope="col">Duration</th>
-								    </tr>
-								  </thead>
-								  <tbody>
-								  	
-								  </tbody>
-
-						
-					</table>
+								
+								
+								
+								
+								
+								
+								
+							</div>
+							
+						</div>
 					</div>
+				</div><!--/.panel-->
+			</div><!-- /.col-->
+		</div><!-- /.row -->				
+			
+					
 
-		    </div>
+</div>
 		
 		
-			<div class="col-sm-12">
-				<p class="back-link">Application By <a href="https://www.xtend.com">Xtend</a></p>
-			</div>
-		</div><!-- /.row -->
-	</div><!--/.main-->
+			
+		
 	
 <script src="/js/jquery-1.11.1.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
