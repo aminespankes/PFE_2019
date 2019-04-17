@@ -92,7 +92,7 @@
 									
 									</a>
 									<div >
-										<a th:href="@{'/avatar/changepass'}"><img src="/image/key.png"   alt="Responsive image">Change Password</a>
+										<a th:href="@{'/avatar/ChangePasse'}"><img src="/image/key.png"   alt="Responsive image">Change Password</a>
 									</div>
 								</div>
 							</li>
@@ -151,7 +151,7 @@
 		
 
 		<ul class="nav menu">
-			<li class="active"><a th:href="@{'/avatar/userHome'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
+			<li class="active"><a th:href="@{'/avatar/avatarHome'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
 		
 			
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
@@ -172,18 +172,7 @@
 			
 			</li>
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+		
 			
 			<li>  <a th:href="@{'/ProfileSettingsAvatar/'}"><em class="glyphicon glyphicon-wrench">&nbsp;</em> Profile Settings</a></li>
 			
@@ -205,12 +194,59 @@
 		</div><!--/.row-->
 		
 		<br>
-		<br>
+		
 		
 		
 
 	<div class="row">
-			
+		<div class="col-md-12">
+				<div class="panel panel-info">
+					<div class="panel-heading"><center>Bookings Management</center> </div>
+					<div class="panel-body">
+					 		
+					 		
+					 		<form method="get">
+				 <div class="table-responsive">
+										<table class="table table-striped">
+										  <tr>
+										    <th>user Name</th>
+										    <th>user Email </th>
+										     <th>Phone Number</th>
+										    <th>Date</th>
+										    
+										     <th>Start Time</th>
+										      <th>End Time</th>
+										    <th>Description of mission</th>
+										    <th>Action</th>
+										  </tr>
+										  <th:block th:each="booking : ${booking}">
+										  <tr>
+										   <td th:text="${booking.username}"></td>
+										   <td th:text="${booking.emailuser}"></td>
+										    <td th:text="${booking.userphone}"></td>
+										   <td th:text="${booking.date}"></td>
+										  
+										    <td th:text="${booking.starttime}"></td>
+										   <td th:text="${booking.endtime}"></td>
+										   <td th:text="${booking.description}"></td>
+										  
+										    
+										    <td>
+										      <a  class="btn btn-sm btn-primary" th:href="@{/acceptbookingavatar(id=${booking.id})}"><span   aria-hidden="true">Accept</span></a>    
+										     <a  class="btn btn-sm btn-danger" th:href="@{/deletebookingavatar(id=${booking.id})}"><span   aria-hidden="true">Cancel</span></a> 
+												  
+												
+												
+										    </td>
+										  </tr>
+										  </th:block>
+										</table>
+							</div>
+			</form>
+						
+					</div>
+				</div>
+			</div>	
 				
 				
 		

@@ -24,7 +24,7 @@ GET: $(document).ready(
 												+ users.country+"</td><td>"
 												+ users.city+"</td><td>"
 												+ users.numtel+"</td><td>"
-												+ "<a class='btn btn-success btn-circle'  href='/user/ViewAVA?id="+users.id+"' >View</a><a  href='/user/FormulaireRes' class='btn btn-primary'>Next</a></td>"
+												+ "<a class='btn btn-success btn-circle'  href='/user/ViewAVA?id="+users.id+"' >View</a><a  href='/user/FormulaireRes?id="+users.id+"' class='btn btn-primary'>Next</a></td>"
                    										 
                  										 
 												+ "</tr>";

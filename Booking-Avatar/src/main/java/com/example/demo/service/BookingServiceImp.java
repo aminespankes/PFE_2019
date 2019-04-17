@@ -36,6 +36,11 @@ public class BookingServiceImp implements BookingService {
 		 return (List<Booking>) bookingRepository.findAll();
 	}
 
+	
+	
+	
+	
+	
 	@Override
 	public Booking getBookingById(int id) {
 		 return bookingRepository.getOne(id);
@@ -46,6 +51,10 @@ public class BookingServiceImp implements BookingService {
 		bookingRepository.deleteById(id);
 		
 	}
+
+	
+
+	
 
 	
 

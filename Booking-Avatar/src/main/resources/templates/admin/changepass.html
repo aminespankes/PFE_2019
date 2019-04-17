@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AVATAR - BOOKING</title>
+	<title>AVATAR-BOOKING</title>
 	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
 	<link th:href="@{/css/datepicker3.css}" rel="stylesheet">
@@ -16,23 +16,6 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
-
-<style type="text/css">
-	#map {
-        width: 100%;
-        height: 325px;
-        
-        
-
-    
-   th {
-  background-color: #4CAF50;
-  color: white;
-}
-}
-</style>
-
 </head>
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -75,7 +58,7 @@
 									
 									</a>
 									<div >
-										<a th:href="@{'/logout'}"><img src="/image/logout.png"   alt="Responsive image">Sign out</a>
+										<a th:href="@{'/login'}"><img src="/image/logout.png"   alt="Responsive image">Sign out</a>
 									</div>
 								</div>
 							</li>
@@ -83,35 +66,30 @@
 					</li>
 				
 				</ul>
-				
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
-
-
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">ADMIN</div>
+				<div class="profile-usertitle-name">Username</div>
 				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="divider"></div>
-		
 		<div class="form-group">
 				
 				
 			</div>
-		
 		<ul class="nav menu">
-			<li class="active"><a th:href="@{'/admin/HomeAdmin'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
+			<li><a th:href="@{'/admin/HomeAdmin'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
 			<li ><a th:href="@{'/admin/avatarAdmin'}"><em class="glyphicon glyphicon-user">&nbsp;</em> Avatar</a></li>
-			<li><a th:href="@{'/admin/userAdmin'}"><em class=" glyphicon glyphicon-user">&nbsp;</em> User</a></li>
-			<li><a th:href="@{'/admin/bookingAdmin'}"><em class="glyphicon glyphicon-file">&nbsp;</em> Booking</a></li>
+			<li ><a th:href="@{'/admin/userAdmin'}"><em class=" glyphicon glyphicon-user">&nbsp;</em> User</a></li>
+			<li class="active"><a th:href="@{'/admin/bookingAdmin'}"><em class="glyphicon glyphicon-file">&nbsp;</em> Booking</a></li>
 			<li><a href="https://myaccount.google.com/"><em class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
 			<li><a th:href="@{'/admin/addAdmin'}"><i class="fa  fa-user-plus" aria-hidden="true">&nbsp;</i>Add Admin</a></li>
 			
@@ -119,91 +97,60 @@
 		</ul>
 	</div><!--/.sidebar-->
 		
-	
-
-
-
-
-	 
-	<div class="col-md-2"></div> 
-	 <div class="col-md-10">
-				<div class="panel panel-primary">
-					<div class="panel-heading">My Profile</div>
-					<div class="panel-body">
-					
-	 
-	 
-	 
-	 
-	 <form id="viewPersoneInformationForm" th:object="${admin}" method="get">
-        
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">Change Password</li>
+			</ol>
+		</div><!--/.row-->
 		
-<div class="table-responsive">
-
-<centre><img th:src="@{${'/img/'+admin.image}}"  class="img-rounded" style="width:150px";/></centre>
-
-
-<table class="table table-striped">
-  
-  
-  <tr>
-      <th>userName</th>
-      <td th:text="${admin.username}"></td>
-    </tr>
-    <tr>
-      <th>Name</th>
-      <td th:text="${admin.name}"></td>
-    </tr>
-    <tr>
-        <th>email</th>
-        <td th:text="${admin.email}"></td>
-      </tr>
-      <tr>
-        <th>Date of Birth</th>
-        <td th:text="${admin.date}"></td>
-      </tr>
-      <tr>
-        <th>Phone Number</th>
-        <td th:text="${admin.numtel}"></td>
-      </tr>
-      <tr>
-        <th>Gender</th>
-        <td th:text="${admin.gender}"></td>
-      </tr>
-      
-      <tr>
-        <th>Country</th>
-        <td th:text="${admin.country}"></td>
-      </tr>
-      <tr>
-        <th>City</th>
-        <td th:text="${admin.city}"></td>
-      </tr>
-      <tr>
-        <th>Street</th>
-        <td th:text="${admin.street}"></td>
-      </tr>
-      <tr>
-        <th>Code ZIP</th>
-        <td th:text="${admin.zip}"></td>
-      </tr> 
-  </table>
-</div>
-
-</form>
- <a class="btn btn-primary" th:href="@{'/admin/HomeAdmin'}">Back</a>
-
-   </div>
-
-
-		</div>
+		<div class="row">
+				
+				<div class="col-md-2">	</div>
+		<div class="col-md-8">
+			<div class="panel panel-blue">
+					<div class="panel-heading dark-overlay"><center>Change Password</center></div>
+					<div class="panel-body">
+						
+						<div class="alert alert-danger" role="alert" th:if="${param.error}">
+					    The password is incorrect!
+					 	</div>
+						<form role="form" onclick="formValidation()" method="get" action="/admin/changepass">
+								<div class="form-group">
+									<label>Current Password</label>
+									<input type="password" class="form-control" >
+								</div>
+								<div class="form-group">
+									<label>New Password</label>
+									<input id="passid" class="form-control" name="password" >
+							  
+                                </div>		
+                                         
+								
+								<div class="form-group">
+									<label>Confirm New Password</label>
+									<input  name="passid1"  id="passid1" type="password"class="form-control" >
+								</div>
+								
+								<button type="submit" class="btn btn-md btn-success">Save</button><button  type="rest" class="btn btn-md btn-default" >Rest</button>
+						</form>				
+					</div>
 				</div>
-			</div>
 
-
-		<!--/.main-->
+	</div>	
+		
+		</div><!--/.row-->
+				
+			
+		
+			
+		</div><!-- /.row -->
 	
-	<script src="/js/jquery-1.11.1.min.js"></script>
+	
+<script src="/js/jquery-1.11.1.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/chart.min.js"></script>
 	<script src="/js/chart-data.js"></script>
@@ -211,40 +158,6 @@
 	<script src="/js/easypiechart-data.js"></script>
 	<script src="/js/bootstrap-datepicker.js"></script>
 	<script src="/js/custom.js"></script>
-	<script>
-		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
-
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: 36.8507512, lng: 10.1908355};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
-    </script>                                   <!--key=YOUR_API_KEY& -->
-
-
-
 	
-		
 </body>
 </html>

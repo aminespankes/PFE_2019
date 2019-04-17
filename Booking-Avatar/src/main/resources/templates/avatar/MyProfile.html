@@ -92,7 +92,7 @@
 									
 									</a>
 									<div >
-										<a th:href="@{'/avatar/changepass'}"><img src="/image/key.png"   alt="Responsive image">Change Password</a>
+										<a th:href="@{'/avatar/ChangePasse'}"><img src="/image/key.png"   alt="Responsive image">Change Password</a>
 									</div>
 								</div>
 							</li>
@@ -112,19 +112,7 @@
 		
 		</ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-				
+		
 				
 			</div>
 		</div><!-- /.container-fluid -->
@@ -151,7 +139,7 @@
 		
 
 		<ul class="nav menu">
-			<li class="active"><a th:href="@{'/avatar/userHome'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
+			<li class="active"><a th:href="@{'/avatar/avatarHome'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
 		
 			
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
@@ -192,22 +180,20 @@
 		</div><!--/.row-->
 		
 		<br>
-		<br>
+		
 		
 		
 
 <div class="row">
 			
-			   <div class="col-sm-7 col-sm-offset-1 col-lg-8  ">
+			    
+	 <div class="col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">My Profile</div>
+					<div class="panel-body">
+			   
 	 <form id="viewPersoneInformationForm" th:object="${avatar}" method="get">
-        <div>
-            <span style="font-size: 1.5em">My Profile</span><br>
-            <br>
-            <span style="float: right">
-               
-               
-            </span>
-        </div>
+     
 		
 <div class="table-responsive">
 
@@ -265,6 +251,8 @@
  <a class="btn btn-primary" th:href="@{'/avatar/avatarHome'}">Back</a>
 
    </div>				
+		</div>
+		</div>
 				
 		
  											

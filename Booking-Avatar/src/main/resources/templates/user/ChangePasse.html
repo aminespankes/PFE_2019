@@ -11,20 +11,55 @@
 	
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+	
 
 
-<style type="text/css">
-	#map {
-        width: 100%;
-        height: 325px;
+<style>
+
+/* Style the container for inputs */
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+#message p {
+  padding: 7px 25px;
+  font-size: 12px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
 </style>
 
+
 </head>
-<body>
+<body onload="document.registration.userid.focus();">		
+
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -37,7 +72,6 @@
 
 
 					<ul class="nav navbar-top-links navbar-right">
-					
 					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
 						<em class="fa fa-bell"></em><span class="label label-danger" th:text="${countnotif}"></span>
 					</a>
@@ -72,7 +106,6 @@
 							</li>
 						</ul>
 					</li>
-					
 					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
 						<em ><img src="/image/user.png"   alt="Responsive image"></em>
 					</a>
@@ -113,7 +146,6 @@
 				</ul>
 
 	
-				
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
@@ -136,7 +168,7 @@
 		
 		
 		<ul class="nav menu">
-			<li ><a th:href="@{'/user/userHome'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
+			<li class="active"><a th:href="@{'/user/userHome'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
 			
 			
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
@@ -152,9 +184,9 @@
 					<li><a class="" th:href="@{'/user/Bookinghistorical'}">
 						<img src="/image/medical-report.png"   alt="Responsive image">&nbsp; historical 
 					</a></li>
-				<!--  	<li><a class="" th:href="@{'/user/cancellationUser'}">
+				<!-- 	<li><a class="" th:href="@{'/user/cancellationUser'}">
 							<img src="/image/cancel.png"   alt="Responsive image">&nbsp; Cancellation
-					</a></li>-->
+					</a></li>  -->
 				</ul>
 			
 			</li>
@@ -174,61 +206,67 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Booking Pending</li>
+				<li class="active">Change Password</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<br>
-		<br>
-		
 		
 		
 
 	<div class="row">
-	<div class="col-md-1"></div>
-	<div class="col-md-10">
-				<div class="panel panel-info">
-					<div class="panel-heading"><center>Booking Pending</center>center></div>
-					<div class="panel-body"><br>
-					
-			<form method="get">
-				 <div class="table-responsive">
-										<table class="table table-striped">
-										  <tr>
-										    <th>Avatar Name</th>
-										    <th>Avatar Email </th>
-										     <th>Phone Number</th>
-										    <th>Date</th>
-										    
-										     <th>Start Time</th>
-										      <th>End Time</th>
-										    
-										    <th>Action</th>
-										  </tr>
-										  <th:block th:each="booking : ${pending}">
-										  <tr>
-										   <td th:text="${booking.avatarname}"></td>
-										   <td th:text="${booking.emailavatar}"></td>
-										    <td th:text="${booking.avatarphone}"></td>
-										   <td th:text="${booking.date}"></td>
-										  
-										    <td th:text="${booking.starttime}"></td>
-										   <td th:text="${booking.endtime}"></td>
-										  
-										    
-										    <td>
-										         
-										     <a  class="btn btn-sm btn-danger" th:href="@{/deletebooking(id=${booking.id})}"><span   aria-hidden="true">Cancel</span></a> 
-											 </td>
-										  </tr>
-										  </th:block>
-										</table>
-							</div>
-			</form>
-
-		</div>
+		<div class="col-md-2">	</div>
+		<div class="col-md-8">
+			<div class="panel panel-blue">
+					<div class="panel-heading dark-overlay"><center>Change Password</center></div>
+					<div class="panel-body">
+						
+						<div class="alert alert-danger" role="alert" th:if="${param.error}">
+					    The password is incorrect!
+					 	</div>
+						<form role="form" onclick="formValidation()" method="get" action="/user/ChangePasse">
+								<div class="form-group">
+									<label>Current Password</label>
+									<input type="password" class="form-control" >
+								</div>
+								<div class="form-group">
+									<label>New Password</label>
+									<input id="passid" class="form-control" name="password" >
+								
+								
+                                  <div class="col-md-3">
+                 						<div class="form-control-feedback">
+						                         <span class="text-danger align-middle" >
+						                         </span>
+							                 </div>
+							             </div>
+                                   
+                                    
+                                    
+                                </div>		
+                                <div id="message" >
+ 
+													 
+													  <center><h7 >Password must contain the following:</h7>
+													  
+													  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+													  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+													  <p id="number" class="invalid">A <b>number</b></p>
+													  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+													</center>
+								</div>               
+								
+								<div class="form-group">
+									<label>Confirm New Password</label>
+									<input  name="passid1"  id="passid1" type="password"class="form-control" >
+								</div>
+								
+								<button type="submit" class="btn btn-md btn-success">Save</button><button  type="rest" class="btn btn-md btn-default" >Rest</button>
+						</form>				
+					</div>
 				</div>
-			</div>
+
+	</div>
 
 
 	</div>	<!--/.main-->
@@ -241,7 +279,51 @@
 	<script src="/js/easypiechart-data.js"></script>
 	<script src="/js/bootstrap-datepicker.js"></script>
 	<script src="/js/custom.js"></script>
-                                  <!--key=YOUR_API_KEY& -->
+    <script type="text/javascript">
+    function formValidation()
+    {var passi = document.registration.passid;
+    var passi1 = document.registration.passid1;
+    if(password_validation(passi))
+    {
+    if (confirmer_password())
+    {
+    }
+    }
+    
+    return false ;
+    }
+    
+    function password_validation(passi)
+    {var pass=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/
+    var b=pass.test(document.registration.passid.value)
+    if(b==false)
+    	{
+    	alert("Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters");
+    	document.registration.passid.focus();
+    	return false;
+    	}
+    else
+    	{return true;}
+    }
+
+
+    function confirmer_password()
+    {
+    	var passi = document.registration.passid;
+    	var passi1 = document.registration.passid1;
+    	if (passi1!=0||passi==passi1)
+    		  { 
+    		  return true;
+    		 }
+    	  else{
+    		  alert("confirm your password ");
+    			 passid1.focus();
+    	  return false;
+    		 
+    		}
+    }
+    
+    </script>
 
 
 

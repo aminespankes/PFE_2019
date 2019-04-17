@@ -43,6 +43,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
 				<a class="navbar-brand" th:href="@{'/HomeApp'}"><span>Avatar</span>Booking</a>
+				
 					
 				<ul class="nav navbar-top-links navbar-right">
 			<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -83,7 +84,6 @@
 					</li>
 				
 				</ul>
-				
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
@@ -107,99 +107,120 @@
 				
 			</div>
 		
+		
 		<ul class="nav menu">
 			<li class="active"><a th:href="@{'/admin/HomeAdmin'}"><em class="glyphicon glyphicon-home">&nbsp;</em> Home</a></li>
-			<li ><a th:href="@{'/admin/avatarAdmin'}"><em class="glyphicon glyphicon-user">&nbsp;</em> Avatar</a></li>
+			<li><a th:href="@{'/admin/avatarAdmin'}"><em class="glyphicon glyphicon-user">&nbsp;</em> Avatar</a></li>
 			<li><a th:href="@{'/admin/userAdmin'}"><em class=" glyphicon glyphicon-user">&nbsp;</em> User</a></li>
 			<li><a th:href="@{'/admin/bookingAdmin'}"><em class="glyphicon glyphicon-file">&nbsp;</em> Booking</a></li>
 			<li><a href="https://myaccount.google.com/"><em class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
-			<li><a th:href="@{'/admin/addAdmin'}"><i class="fa  fa-user-plus" aria-hidden="true">&nbsp;</i>Add Admin</a></li>
+		<li><a th:href="@{'/admin/addAdmin'}"><i class="fa  fa-user-plus" aria-hidden="true">&nbsp;</i>Add Admin</a></li>
 			
 			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
-	
-
-
-
-
-	 
-	<div class="col-md-2"></div> 
-	 <div class="col-md-10">
+	<div class="col-sm-12 col-sm-offset-3 col-lg-10  col-lg-offset-2 main">
+	<br><br>
+	<div class="col-md-6">
 				<div class="panel panel-primary">
-					<div class="panel-heading">My Profile</div>
+					<div class="panel-heading">AVATAR
+						<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
 					<div class="panel-body">
+					<form  th:object="${lists}">
+					<table>
 					
-	 
-	 
-	 
-	 
-	 <form id="viewPersoneInformationForm" th:object="${admin}" method="get">
-        
-		
-<div class="table-responsive">
-
-<centre><img th:src="@{${'/img/'+admin.image}}"  class="img-rounded" style="width:150px";/></centre>
-
-
-<table class="table table-striped">
-  
-  
-  <tr>
-      <th>userName</th>
-      <td th:text="${admin.username}"></td>
-    </tr>
-    <tr>
-      <th>Name</th>
-      <td th:text="${admin.name}"></td>
-    </tr>
-    <tr>
-        <th>email</th>
-        <td th:text="${admin.email}"></td>
-      </tr>
-      <tr>
-        <th>Date of Birth</th>
-        <td th:text="${admin.date}"></td>
-      </tr>
-      <tr>
-        <th>Phone Number</th>
-        <td th:text="${admin.numtel}"></td>
-      </tr>
-      <tr>
-        <th>Gender</th>
-        <td th:text="${admin.gender}"></td>
-      </tr>
-      
-      <tr>
-        <th>Country</th>
-        <td th:text="${admin.country}"></td>
-      </tr>
-      <tr>
-        <th>City</th>
-        <td th:text="${admin.city}"></td>
-      </tr>
-      <tr>
-        <th>Street</th>
-        <td th:text="${admin.street}"></td>
-      </tr>
-      <tr>
-        <th>Code ZIP</th>
-        <td th:text="${admin.zip}"></td>
-      </tr> 
-  </table>
-</div>
-
-</form>
- <a class="btn btn-primary" th:href="@{'/admin/HomeAdmin'}">Back</a>
-
-   </div>
-
-
-		</div>
+						  <tr>
+						      <th><img  th:src="@{${'/img/'+lists.avatarimage}}"  class="img-rounded" style="width:200px;height:200"/></th>
+						     <td ></td>
+						    </tr>
+						    
+					</table><br><br>
+					<table>
+					  <tr>
+					  		<th><img src="/image/man-user (1).png"   alt="Responsive image"></th>
+					  		<td><h4 th:text="${lists.avatarname}"></h4></td>
+					  
+					  </tr>
+					  <tr>
+					  		<th><img src="/image/opened-email-envelope (1).png"   alt="Responsive image"></th>
+					  		<td><h4 th:text="${lists.emailavatar}"></h4></td>
+					  
+					  </tr>
+					  <tr>
+					  		<th><img src="/image/telephone (1).png"   alt="Responsive image"></th>
+					  		<td><h4 th:text="${lists.avatarphone}"></h4></td>
+					  
+					  </tr>
+					  <tr>
+					  		<th><img src="/image/flag.png"   alt="Responsive image"></th>
+					  		<td><h4 th:text="${lists.avatarcountry}"></h4></td>
+					  
+					  </tr>
+					  <tr>
+					  		<th><img src="/image/home-address.png"   alt="Responsive image"></th>
+					  		<td><h4 th:text="${lists.avatarcity}"></h4></td>
+					  
+					  </tr>
+					
+					
+					</table> 
+				 
+					</form>
+					</div>
 				</div>
+				<center>    <a class="btn btn-success" th:href="@{'/admin/bookingAdmin'}">Back</a> </center>
 			</div>
-
+			<div class="col-md-6">
+				<div class="panel panel-success">
+					<div class="panel-heading">USER
+						<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-body">
+					<form  th:object="${lists}">
+					<table>
+					
+						  <tr>
+						      <th><img  th:src="@{${'/img/'+lists.userimage}}"  class="img-rounded" style="width:200px;height:200"/></th>
+						     <td ></td>
+						    </tr>
+						    
+					</table><br><br>
+					<table>
+					  <tr>
+					  		<th><img src="/image/man-user.png"   alt="Responsive image"></th>
+					  		<td><h4 th:text="${lists.username}"></h4></td>
+					  
+					  </tr>
+					  <tr>
+					  		<th><img src="/image/opened-email-envelope.png"   alt="Responsive image"></th>
+					  		<td><h4 th:text="${lists.emailuser}"></h4></td>
+					  
+					  </tr>
+					  <tr>
+					  		<th><img src="/image/telephone.png"   alt="Responsive image"></th>
+					  		<td><h4 th:text="${lists.userphone}"></h4></td>
+					  
+					  </tr>
+					  <tr>
+					  		<th><img src="/image/flag (1).png"   alt="Responsive image"></th>
+					  		<td><h4 th:text="${lists.usercountry}"></h4></td>
+					  
+					  </tr>
+					  <tr>
+					  		<th><img src="/image/home-addresss.png"   alt="Responsive image"></th>
+					  		<td><h4 th:text="${lists.usercity}"></h4></td>
+					  
+					  </tr>
+					
+					
+					</table> 
+				 
+					</form>
+					</div>
+				</div>
+				 <center>    <a class="btn btn-primary" th:href="@{'/admin/bookingAdmin'}">Back</a> </center>
+			</div>
+   </div>
 
 		<!--/.main-->
 	
@@ -211,40 +232,12 @@
 	<script src="/js/easypiechart-data.js"></script>
 	<script src="/js/bootstrap-datepicker.js"></script>
 	<script src="/js/custom.js"></script>
-	<script>
-		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
-
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: 36.8507512, lng: 10.1908355};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
-    </script>                                   <!--key=YOUR_API_KEY& -->
+                              <!--key=YOUR_API_KEY& -->
 
 
 
 	
 		
 </body>
+
 </html>
