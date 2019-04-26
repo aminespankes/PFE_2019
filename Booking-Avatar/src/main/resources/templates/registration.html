@@ -69,7 +69,11 @@
 			<div class="navbar-header">
 				
 				<a class="navbar-brand" href="#"><span>Avatar</span>Booking</a>
-
+					
+					<ul class="nav navbar-top-links navbar-right">
+			<li><a  class="navbar-brand" th:href="@{'/login'}">Login</a></li>
+				
+				</ul>
 				
 				
 			</div>
@@ -77,16 +81,17 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	
+	
+	<div class="row">
 		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+			<div class="col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading"><strong>REGISTER</strong></div>
+					<div class="panel-body">
+	
 		
+	<div class="col-sm-7 col-sm-offset-3 col-lg-12 col-lg-offset-1 main">
 		
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">REGISTER</h1>
-				
-				
-				
 
 
 			<form method="post" action="/registration" th:object="${persone}">
@@ -94,31 +99,14 @@
 
 
      
-             <div class="col-md-3"></div>
-             <div class="col-md-6">
-              <div class="alert alert-success" role="alert" th:if="${msg}" th:utext="${msg}">
-             
-             </div>
-         </div>
-         
-         <div class="col-md-3">
-                 <div class="form-control-feedback">
-                         <span class="text-danger align-middle" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
-                         </span>
-                 </div>
-              
-              
-    			 </div>
-    			 
-         
-
-
 
 
 								<div class="form-group row">
-								<label for="image" class="col-md-4 col-form-label text-md-right">Insert your Image</label>
+								<label for="image" class="col-md-4 col-form-label text-md-right">Insert your Photo</label>
                                    <div class="col-md-6">
-                                        <input type="file" id="image" th:field="*{image}" class="form-control" name="image" >
+                                  
+                                        <input type="file"  id="image" th:field="*{image}" class="form-control" name="image" style='width:140px'>
+										<Strong th:if="${#fields.hasErrors('image')}" th:errors="*{image}">Image Error</Strong>                                    
                                     </div>
                                    </div>
                                    
@@ -126,24 +114,42 @@
 							<div class="form-group row">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">Name </label>
                                     <div class="col-md-6">
-                                        <input type="text" id="name" th:field="*{name}" class="form-control" name="name" >
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error : ''">
+                                                                                                                  
+                                                    <div th:classappend="${#fields.hasErrors('name')} ? 'input-icon right' : ''">
+                                                       
+                                        <input type="text" id="name" th:field="*{name}" class="form-control" name="name" style='width:250px'>
+                                    	<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
                                     </div>
                                 </div>
-                                
-                                
+                               </div> 
+                                </div>
       
 								<div class="form-group row">
                                     <label for="username" class="col-md-4 col-form-label text-md-right">User Name </label>
                                     <div class="col-md-6">
-                                        <input type="text"  th:field="*{username}" id="username" class="form-control" name="username" placeholder="mario08">
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('username')} ? has-error : ''">
+                                                                                                                  
+                                                    <div th:classappend="${#fields.hasErrors('username')} ? 'input-icon right' : ''">
+                                        <input type="text"  th:field="*{username}" id="username" class="form-control" name="username" placeholder="mario08" style='width:250px'>
+                                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">username Error</span>
                                     </div>
                                 </div>
-
+								</div>
+								</div>
+								
                                 	<div class="form-group row">
                                     <label for="date" class="col-md-4 col-form-label text-md-right">Date of birth </label>
                                     <div class="col-md-6">
-                                        <input type="date" id="date" th:field="*{date}"class="form-control" name="date" >
+                                  
+                                    <div class="form-group" th:classappend="${#fields.hasErrors('date')} ? has-error : ''">
+                                    <div th:classappend="${#fields.hasErrors('date')} ? 'input-icon right' : ''">
+                                        <input type="date" id="date" th:field="*{date}"class="form-control" name="date" style='width:250px'>
+                                         <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}">date Error</span>
                                     </div>
+                                </div>
+                                </div>
+                             
                                 </div>
 
 
@@ -154,11 +160,14 @@
 								<div class="form-group row">
                                     <label for="email" class="col-md-4 col-form-label text-md-right">Email Address</label>
                                     <div class="col-md-6">
-                                        <input type="email" id="email" th:field="*{email}" name="email" class="form-control"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="mario76@exmple.com">
-                                    
+                                    <div  class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error : ''">
+                                      
+                                        <input type="email" id="email" th:field="*{email}" name="email" class="form-control"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="mario76@exmple.com" style='width:350px'>
+                                    <span th:if="${#fields.hasErrors('email')}" class="help-block" th:errors="*{email}"></span>
                                     
                                     </div>
                                     
+                                    </div>
                                     </div>
                                     
                                     
@@ -171,7 +180,7 @@
 									<div class="form-group row">
                                     <label for="passid" class="col-md-4 col-form-label text-md-right" >Password</label>
                                     <div class="col-md-6">
-                                        <input type="password"  th:field="*{password}" id="passid" class="form-control" name="password" >
+                                        <input type="password"  th:field="*{password}" id="passid" class="form-control" name="password" style='width:350px'>
                                     </div>
                                     
                                     <div class="col-md-3">
@@ -184,7 +193,7 @@
                                     
                                     
                                 </div>		
-                                <div id="message" >
+                                <div id="message" class="col-md-9" >
  
  
   <center><h7 >Password must contain the following:</h7>
@@ -194,29 +203,25 @@
   <p id="number" class="invalid">A <b>number</b></p>
   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 </center>
+<br>
    </div>                             
                                 
                                 <div class="form-group row">
                                     <label for="passid1" class="col-md-4 col-form-label text-md-right">Repeat password</label>
                                     <div class="col-md-6">
-                                        <input type="password" id="passid1" class="form-control" name="passid1">
+                                        <input type="password" id="passid1" class="form-control" name="passid1" style='width:350px'>
                                     </div>
                                 </div>							
 																
 																
-							
-																
-																
-								
-							
-
+			
 
  							
 
 <div class="form-group row">
 <label for="country" class="col-md-4 col-form-label text-md-right">Country</label>
 	 <div class="col-md-6">
-	 <select name="country"  th:field="*{country}" class="form-control" >
+	 <select name="country"  th:field="*{country}" class="form-control"  style='width:250px'>
 
 <option value="France" selected="selected">France </option>
 
@@ -486,7 +491,7 @@
 								<div class="form-group row">
                                     <label for="city" class="col-md-4 col-form-label text-md-right">City</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="city" th:field="*{city}" class="form-control" name="city" >
+                                        <input type="text" id="city" th:field="*{city}" class="form-control" name="city" style='width:250px'>
                                     </div>
                                 </div>	
                                 
@@ -496,7 +501,7 @@
                                     <label for="street" class="col-md-4 col-form-label text-md-right">Street
 											</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="street" th:field="*{street}" class="form-control" name="street" placeholder="445 Mount Eden Road">
+                                        <input type="text" id="street" th:field="*{street}" class="form-control" name="street" placeholder="445 Mount Eden Road" style='width:250px'>
                                     </div>
                                 </div>	
 
@@ -507,7 +512,7 @@
                                     <label for="ZIP" class="col-md-4 col-form-label text-md-right">ZIP code
 											</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="ZIP" th:field="*{zip}" class="form-control" name="zip" >
+                                        <input type="text" id="ZIP" th:field="*{zip}" class="form-control" name="zip" style='width:250px' >
                                     </div>
                                 </div>	
                                 
@@ -515,7 +520,7 @@
 									<div class="form-group row">
                                     <label for="numtel" class="col-md-4 col-form-label text-md-right">Phone number</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="numtel" th:field="*{numtel}" class="form-control" name="numtel" placeholder="+33 123456789">
+                                        <input type="text" id="numtel" th:field="*{numtel}" class="form-control" name="numtel" placeholder="+33 123456789" style='width:350px'>
                                     </div>
                                 </div> 
                                 
@@ -563,10 +568,14 @@
                              <center> <div class="col-md-8 offset-md-4">
                                         
                                         
-                                       <input type="submit" class="btn btn-primary" value="Sign Up"> 
+                                       <input type="submit" class="btn btn-primary" value="Sign up"> 
                                       
-                                        <input type="reset" value="Réinitialiser" class="btn btn-danger">
-                                </div>   </center>
+                                        <input type="reset" value="Reset" class="btn btn-danger">
+                                </div>  
+                                
+                                
+                                
+                                 </center>
                                 
                               
                               
@@ -575,12 +584,7 @@
 
 </form>
 				
-				<form th:action="@{/login}" method="GET">
-				<div class="col-md-8 offset-md-4">
 				
-						<center><button class="btn btn-md btn-success " type="Submit"> Login </button></center>
-					</div>
-				</form>	
 
 				
 
@@ -607,6 +611,8 @@
 			</div>
 		</div><!--/.row-->
 	</div><!--/.main-->
+	</div>
+	
 	
 		<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

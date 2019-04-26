@@ -201,10 +201,11 @@
 										    
 										     <th>Start Time</th>
 										      <th>End Time</th>
+										        <th>Description Of Mission</th>
 										    <th>Action</th>
 										    
 										  </tr>
-										  <th:block th:each="booking : ${bookingaccept}">
+										  <th:block th:each="booking : ${accepted}">
 										  <tr>
 										   <td th:text="${booking.avatarname}"></td>
 										   <td th:text="${booking.emailavatar}"></td>
@@ -213,6 +214,7 @@
 										  
 										    <td th:text="${booking.starttime}"></td>
 										   <td th:text="${booking.endtime}"></td>
+										      <td th:text="${booking.description}"></td>
 										  <td>
 										         
 										     <a  class="btn btn-sm btn-danger" th:href="@{/deletebooking(id=${booking.id})}"><span   aria-hidden="true">Cancel</span></a> 

@@ -169,7 +169,7 @@
 			
 			
 			
-			 <th:block th:each="user : ${user}"></th:block>
+			 
 			<li>  <a th:href="@{'/ProfileSettingsUser/'}"><em class="glyphicon glyphicon-wrench">&nbsp;</em> Profile Settings</a></li>
 			
 			<li><a href="https://myaccount.google.com/"><em class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
@@ -208,7 +208,7 @@
 					<br>
 					 
 						<div class="col-md-6">
-						<img th:src="@{${'/img/'+booking.userimage}}"  class="img-rounded" style="width:150px";/><br><br>
+						<img th:src="@{${'/img/'+booking.userimage}}"   style="width:150px";/><br><br>
 						<i class="fa fa-user" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.username}"></strong><br>
 						<i class="fa fa-envelope" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.emailuser}"></strong><br>
 						<i class="fa fa-phone-square" aria-hidden="true" style="color:#0080ff"></i> <strong th:text="${booking.userphone}"></strong><br>
@@ -238,12 +238,12 @@
 						
 						<div class="col-md-3"></div>
 						<div >
-						<a   class="btn btn-sm btn-primary" th:href="@{/View}"><span   aria-hidden="true">UPDATE</span></a>
+						<a   class="btn btn-sm btn-primary" th:href="@{/user/UpdateBooking(id=${booking.id})}"><span   aria-hidden="true">UPDATE</span></a>
 										       
-						 <a  class="btn btn-sm btn-success" th:href="@{/delete}"><span   aria-hidden="true">TO CONFIRM</span></a>
-										        
+						 
+						<a   class="btn btn-sm btn-success" th:href="@{/user/payment(id=${booking.id})}"><span   aria-hidden="true">TO CONFIRM</span></a>			        
 												   
-						<a class="btn btn-sm btn-danger"><span  aria-hidden="true">CANCEL</span></a><br>
+						<a class="btn btn-sm btn-danger" th:href="@{/deletebooking(id=${booking.id})}"><span  aria-hidden="true">CANCEL</span></a><br>
 						<br>
 						
 						</div>

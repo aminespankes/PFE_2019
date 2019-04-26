@@ -120,107 +120,57 @@
 		</ul>
 	</div><!--/.sidebar-->
 		
-	<div class="col-sm-12 col-sm-offset-3 col-lg-10  col-lg-offset-2 main">
-	<br><br>
-	<div class="col-md-6">
-				<div class="panel panel-primary">
-					<div class="panel-heading">AVATAR
-						<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
-					<div class="panel-body">
-					<form  th:object="${lists}">
-					<table>
-					
-						  <tr>
-						      <th><img  th:src="@{${'/img/'+lists.avatarimage}}"  class="img-rounded" style="width:200px;height:200"/></th>
-						     <td ></td>
-						    </tr>
-						    
-					</table><br><br>
-					<table>
-					  <tr>
-					  		<th><img src="/image/man-user (1).png"   alt="Responsive image"></th>
-					  		<td><h4 th:text="${lists.avatarname}"></h4></td>
-					  
-					  </tr>
-					  <tr>
-					  		<th><img src="/image/opened-email-envelope (1).png"   alt="Responsive image"></th>
-					  		<td><h4 th:text="${lists.emailavatar}"></h4></td>
-					  
-					  </tr>
-					  <tr>
-					  		<th><img src="/image/telephone (1).png"   alt="Responsive image"></th>
-					  		<td><h4 th:text="${lists.avatarphone}"></h4></td>
-					  
-					  </tr>
-					  <tr>
-					  		<th><img src="/image/flag.png"   alt="Responsive image"></th>
-					  		<td><h4 th:text="${lists.avatarcountry}"></h4></td>
-					  
-					  </tr>
-					  <tr>
-					  		<th><img src="/image/home-address.png"   alt="Responsive image"></th>
-					  		<td><h4 th:text="${lists.avatarcity}"></h4></td>
-					  
-					  </tr>
-					
-					
-					</table> 
-				 
-					</form>
-					</div>
-				</div>
-				<center>    <a class="btn btn-success" th:href="@{'/admin/bookingAdmin'}">Back</a> </center>
-			</div>
-			<div class="col-md-6">
+	
+ <div class="col-sm-12 col-sm-offset-3 col-lg-10  col-lg-offset-2 main">  
+ <br>
+   <div class="col-md-1"></div><div class="col-md-10">
 				<div class="panel panel-success">
-					<div class="panel-heading">USER
-						<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-heading">Booking
+						<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span>
+					</div>
+					<br>
+					<br>	
 					<div class="panel-body">
-					<form  th:object="${lists}">
-					<table>
-					
-						  <tr>
-						      <th><img  th:src="@{${'/img/'+lists.userimage}}"  class="img-rounded" style="width:200px;height:200"/></th>
-						     <td ></td>
-						    </tr>
-						    
-					</table><br><br>
-					<table>
-					  <tr>
-					  		<th><img src="/image/man-user.png"   alt="Responsive image"></th>
-					  		<td><h4 th:text="${lists.username}"></h4></td>
-					  
-					  </tr>
-					  <tr>
-					  		<th><img src="/image/opened-email-envelope.png"   alt="Responsive image"></th>
-					  		<td><h4 th:text="${lists.emailuser}"></h4></td>
-					  
-					  </tr>
-					  <tr>
-					  		<th><img src="/image/telephone.png"   alt="Responsive image"></th>
-					  		<td><h4 th:text="${lists.userphone}"></h4></td>
-					  
-					  </tr>
-					  <tr>
-					  		<th><img src="/image/flag (1).png"   alt="Responsive image"></th>
-					  		<td><h4 th:text="${lists.usercountry}"></h4></td>
-					  
-					  </tr>
-					  <tr>
-					  		<th><img src="/image/home-addresss.png"   alt="Responsive image"></th>
-					  		<td><h4 th:text="${lists.usercity}"></h4></td>
-					  
-					  </tr>
-					
-					
-					</table> 
-				 
-					</form>
+					<br>
+					 
+						<div class="col-md-8">
+						<img th:src="@{${'/img/'+booking.userimage}}"   style="width:150px";/><br><br>
+						<i class="fa fa-user" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.username}"></strong><br>
+						<i class="fa fa-envelope" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.emailuser}"></strong><br>
+						<i class="fa fa-phone-square" aria-hidden="true" style="color:#0080ff"></i> <strong th:text="${booking.userphone}"></strong><br>
+						<i class="fa fa-globe" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.usercountry}"></strong><br>
+						<i class="fa fa-map-marker" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.usercity}"></strong><br>
+						</div>
+						
+						<div class="col-md-4">
+						<img th:src="@{${'/img/'+booking.avatarimage}}"   style="width:150px";/><br><br>
+						<i class="fa fa-user" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.avatarname}"></strong><br>
+						<i class="fa fa-envelope" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.emailavatar}"></strong><br>
+						<i class="fa fa-phone-square" aria-hidden="true" style="color:#0080ff"></i> <strong th:text="${booking.avatarphone}"></strong><br>
+						<i class="fa fa-globe" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.avatarcountry}"></strong><br>
+						<i class="fa fa-map-marker" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.avatarcity}"></strong><br><br>
+						</div>
+						
+						<div class="divider"></div>  
+						<div class="col-md-4"></div>
+						<div class="col-md-4">
+						<i class="fa fa-calendar" aria-hidden="true"style="color:#0080ff"></i><strong th:text="${booking.date}"></strong><br>
+						<i class="fa fa-hourglass-start" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.starttime}"></strong><br>
+						<i class="fa fa-hourglass-end" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.endtime}"></strong><br>
+						<i class="fa fa-commenting" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.description}"></strong><br><br> <br>
+						</div>
+						
+						</div>
+						
+						<div class="col-md-3"></div>
+						
+						 
+						
+						
+						
 					</div>
 				</div>
-				 <center>    <a class="btn btn-primary" th:href="@{'/admin/bookingAdmin'}">Back</a> </center>
 			</div>
-   </div>
 
 		<!--/.main-->
 	

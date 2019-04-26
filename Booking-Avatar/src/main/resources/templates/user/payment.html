@@ -24,6 +24,10 @@
         
         text-align:center;
         }
+        .lignesEspacees{
+ border-collapse : separate;
+ border-spacing : 20px;
+}
         
 </style>
 </head>
@@ -169,7 +173,7 @@
 			
 			
 			
-			 
+			 <th:block th:each="user : ${user}"></th:block>
 			<li>  <a th:href="@{'/ProfileSettingsUser/'}"><em class="glyphicon glyphicon-wrench">&nbsp;</em> Profile Settings</a></li>
 			
 			<li><a href="https://myaccount.google.com/"><em class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
@@ -185,55 +189,84 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active"> Bookings Historical</li>
+				<li class="active">Confirm Bookings</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<br>
-		
-		
-		
-<div ><center><h2>Historical Bookings</h2></center> </div>
-<br>
-		<br>
 	
-	<div class="row">
-	<th:block th:each="booking : ${confirmer}">
-	<tr>
-			
-				
-				
-				
-				
-				
-				<div class="col-md-4">
-				<div class="panel panel-success">
-					<div class="panel panel-info">
-					<div class="panel-heading">Booking
-						<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
-					<div class="panel-body">
-						<i class="fa fa-envelope" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.emailavatar}"></strong><br>
-						<i class="fa fa-phone-square" aria-hidden="true" style="color:#0080ff"></i> <strong th:text="${booking.avatarphone}"></strong><br>
-						<i class="fa fa-globe" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.avatarcountry}"></strong><br>
-						<i class="fa fa-map-marker" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.avatarcity}"></strong><br>
-						<i class="fa fa-calendar" aria-hidden="true"style="color:#0080ff"></i><strong th:text="${booking.date}"></strong><br>					
-						<i class="fa fa-commenting" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.description}"></strong><br>
-						
-					</div>
-				</div>
-				
-					
-						
-					
-				</div>
-			</div>
 		
-	</tr>
-</th:block>
-	
+		
 
+	<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+	<div class="panel panel-primary">
+					<div class="panel-heading"><center>FORM PAYMENT</center> 
+						</div>
+					<div class="panel-body">
+					<div class="col-md-1"></div>
+					<div class="col-md-9">
+			<span>	Transaction amount : </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>EUR</strong><br>
+			<br>
+			<span> Transaction reference :</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>FACT-<Strong th:text="${booking.id}"></Strong>-<Strong th:text="${user.id}"></Strong>-AvatarBooking</strong><br>
+			<br>
+			<span>	Transaction date : </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Strong th:text="${date}"></Strong><br>
+			<br>
+			
+			<table class=lignesEspacees>
+			<tr>
+			<td scope="row">Email:</td>
+			<th align="right"><input type="text" class="form-control"    th:value="${user.email}" style='width:240px'/></th>
+			</tr>
+			<tr>
+			
+			
+			
+			
+			
+			<td scope="row">Name:&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<th><input type="text" class="form-control"    th:value="${user.name}" style='width:180px'/></th>
+			</tr>
+			<tr>
+			
+			
+			
+			
+			<td>N ° of the bank card :</td>
+			<th><input type="text" class="form-control"    style='width:240px' /></th>
+			</tr>
+			
+			
+		
+			
+			<tr>
+			<td>Cryptogram (CVC2):</td>
+			<th><input type="text" class="form-control"     style='width:110px'/></th>
+			</tr>
+			</table>
+			
+			
+		<center>	<a   class="btn btn-md btn-primary" th:href="@{/user/ConfirmeBooking}"><span   aria-hidden="true">Back</span></a>
+										       
+						 
+			<a   class="btn btn-md btn-success" th:href="@{/user/paymentValider(id=${booking.id})}"><span   aria-hidden="true">Payment</span></a></center>
+			 
+		
+		
+		
+		
+		</div>
+		
+		</div>
+		
+		
+		</div>
+		</div>
+		</div>
+		
 	</div>	<!--/.main-->
-	</div>
+	
 	<script src="/js/jquery-1.11.1.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/chart.min.js"></script>

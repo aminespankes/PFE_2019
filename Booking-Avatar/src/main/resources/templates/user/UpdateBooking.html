@@ -169,7 +169,7 @@
 			
 			
 			
-			 
+			 <th:block th:each="user : ${user}"></th:block>
 			<li>  <a th:href="@{'/ProfileSettingsUser/'}"><em class="glyphicon glyphicon-wrench">&nbsp;</em> Profile Settings</a></li>
 			
 			<li><a href="https://myaccount.google.com/"><em class="glyphicon glyphicon-envelope">&nbsp;</em> Email</a></li>
@@ -185,51 +185,117 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active"> Bookings Historical</li>
+				<li class="active">Update Booking</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<br>
-		
-		
-		
-<div ><center><h2>Historical Bookings</h2></center> </div>
-<br>
-		<br>
 	
 	<div class="row">
-	<th:block th:each="booking : ${confirmer}">
-	<tr>
-			
-				
-				
-				
-				
-				
-				<div class="col-md-4">
-				<div class="panel panel-success">
-					<div class="panel panel-info">
-					<div class="panel-heading">Booking
-						<span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
-					<div class="panel-body">
-						<i class="fa fa-envelope" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.emailavatar}"></strong><br>
-						<i class="fa fa-phone-square" aria-hidden="true" style="color:#0080ff"></i> <strong th:text="${booking.avatarphone}"></strong><br>
-						<i class="fa fa-globe" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.avatarcountry}"></strong><br>
-						<i class="fa fa-map-marker" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.avatarcity}"></strong><br>
-						<i class="fa fa-calendar" aria-hidden="true"style="color:#0080ff"></i><strong th:text="${booking.date}"></strong><br>					
-						<i class="fa fa-commenting" aria-hidden="true" style="color:#0080ff"></i><strong th:text="${booking.description}"></strong><br>
+		<div class="col-md-10  ">
+	  		<div class="col-md-2"></div>
+	    		<div class="col-md-10">
+				<div class="panel panel-blue">
+				<div class="panel-heading dark-overlay"><center><i class="fa fa-cog fa-spin fa-1x fa-fw"></i>Update Booking </center></div>
+				<div class="panel-body">
+                <form method="post" th:action="@{/update-booking(id=${booking.id})}"  th:object="${bookinggg}">
+                
+                
+                
+                    <div class="form-group">
+                       <label for="date">Date of reservation</label>
+                        <input type="date" class="form-control" th:field="*{date}"    />
+                    </div>
+                   <div class="col-md-4">
+														<div class="form-group">
+										<label>Start Time</label>
+										<select  class="form-control">
+											<option  >1 AM</option>
+											<option >2 AM</option>
+											<option>3 AM</option>
+											<option>4 AM</option>
+											<option>5 AM</option>
+											<option>6 AM</option>
+											<option>7 AM</option>
+											<option>8 AM</option>
+											<option>9 AM</option>
+											<option>10 AM</option>
+											<option>11 AM</option>
+											<option>12 AM</option>
+											<option>1 PM</option>
+											<option>2 PM</option>
+											<option>3 PM</option>
+											<option>4 PM</option>
+											<option>5 PM</option>
+											<option>6 PM</option>
+											<option>7 PM</option>
+											<option>8 PM</option>
+											<option>9 PM</option>
+											<option>10 PM</option>
+											<option>11 PM</option>
+											<option>12 PM</option>
+											
+											
+										</select>
+									</div></div>
+									<div class="col-lg-4 col-sm-offset-4">
+												<div class="form-group">
+													
+											<label>End Time</label>
+											 <select name="endtime" class="form-control">
+											<option value="1 AM" >1 AM</option>
+											<option value="2 AM" >2 AM</option>
+											<option>3 AM</option>
+											<option>4 AM</option>
+											<option>5 AM</option>
+											<option>6 AM</option>
+											<option>7 AM</option>
+											<option>8 AM</option>
+											<option>9 AM</option>
+											<option>10 AM</option>
+											<option>11 AM</option>
+											<option>12 AM</option>
+											<option>1 PM</option>
+											<option>2 PM</option>
+											<option>3 PM</option>
+											<option>4 PM</option>
+											<option>5 PM</option>
+											<option>6 PM</option>
+											<option>7 PM</option>
+											<option>8 PM</option>
+											<option>9 PM</option>
+											<option>10 PM</option>
+											<option>11 PM</option>
+											<option>12 PM</option>
+										</select><br><br>
+													</div></div><br>
+                    
+                    <div class="form-group">
+                       <label for="date">Description of Mission</label>
+                        <textarea type="text" class="form-control" th:field="*{description}"    />
+                    </div>
+                    
+                   
+                <center>
+                <div >
+						<a   class="btn btn-md btn-primary"  th:href="@{/user/ConfirmeBooking(id=${booking.id})}"><span   aria-hidden="true">Back</span></a>
+										       
+						 <button type="submit" class="btn btn-md btn-success">Save</button>
+									        
+												   
+						<a class="btn btn-md btn-danger" th:href="@{/deletebooking(id=${booking.id})}"><span  aria-hidden="true">CANCEL</span></a><br>
+						<br>
 						
-					</div>
-				</div>
-				
-					
-						
-					
-				</div>
-			</div>
-		
-	</tr>
-</th:block>
+						</div><br>
+                
+                </form>
+        
+    </div>
+</div>
+</div>		
+
+
+	</div>	<!--/.main-->
 	
 
 	</div>	<!--/.main-->

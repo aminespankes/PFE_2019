@@ -23,6 +23,8 @@ public Booking findByEmailavatar(String emailavatar);
 	Booking getBookingById(int id);
 	
 	public void delete(int id);
+	public void deleteEmailUser(String emailuser);
+	//public void deleteEmailAvatar(String emailavatar);
 	
 	
 	

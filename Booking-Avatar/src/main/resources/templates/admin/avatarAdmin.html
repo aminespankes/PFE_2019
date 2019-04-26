@@ -172,8 +172,9 @@
 				</div>
 
 			</form>
-
+			
 		</div>
+		<div> <Strong th:text="${message}"></Strong></div>
 		<div class="row">
 
 
@@ -200,9 +201,11 @@
 							<td th:text="${persone.gender}"></td>
 							<td th:text="${persone.country}"></td>
 
-							<td><a  class='btn btn-success btn-circle'  th:href="@{/ViewAvatar(id=${persone.id})}"><span
+							<td><a  class="btn btn-sm btn-success"  th:href="@{/ViewAvatar(id=${persone.id})}"><span aria-hidden="true">VIEW</span></a>
 									
-									aria-hidden="true">VIEW</span></a></td>
+									
+									
+									 <a  class="btn btn-sm btn-danger" th:href="@{/deleteAVATAR(id=${persone.id})}"><span   aria-hidden="true">DELETE</span></a></td>
 						</tr>
 					</th:block>
 				</table>

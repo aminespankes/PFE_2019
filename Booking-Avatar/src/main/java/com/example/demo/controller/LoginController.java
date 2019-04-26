@@ -48,7 +48,7 @@ public class LoginController {
 	
 	
 	@PostMapping("/registration")
-	public ModelAndView createNewPersone(@ModelAttribute("persone") Persone persone,/*@Valid Persone persone,*/ BindingResult bindingResult) {
+	public ModelAndView createNewPersone(@ModelAttribute("persone") Persone persone,@Valid Persone persone1, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 		Persone userExists = personeService.findPersoneByEmail(persone.getEmail());
 		if (userExists != null) {

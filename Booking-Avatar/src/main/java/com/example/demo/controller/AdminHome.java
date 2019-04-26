@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.model.Admin;
 import com.example.demo.model.Avatar;
+import com.example.demo.model.Booking;
 import com.example.demo.model.Persone;
 import com.example.demo.model.User;
 import com.example.demo.repository.AppCrudRepo;
@@ -129,6 +131,14 @@ public class AdminHome {
 		
 	}
 	
+	
+	
+	
+	
+	
+
+	
+	
 	/*-----------------------------BookingAdmin-----------------------*/
 
 	
@@ -136,7 +146,7 @@ public class AdminHome {
 	public ModelAndView bookingAdmin(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/admin/bookingAdmin");
-		modelAndView.addObject("lists",bookingRepository.findAll());
+		modelAndView.addObject("lists",bookingRepository.findAllAccepted());
 		
 		return modelAndView;
 		
@@ -149,7 +159,7 @@ public class AdminHome {
 	public ModelAndView Viewbooking(@RequestParam("id") int id){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/admin/ViewBooking");
-		modelAndView.addObject("lists",bookingService.getBookingById(id));
+		modelAndView.addObject("booking",bookingService.getBookingById(id));
 		
 		return modelAndView;
 		
@@ -190,6 +200,67 @@ public class AdminHome {
 	public String deleteCustomerForm(@RequestParam("id") int id) {
 		personeRepository.deleteById(id);
 	    return "redirect:/admin/HomeAdmin";       
+	}
+	
+	
+	
+	
+/*-----------------------------deleteAVATAR-----------------------*/
+
+	
+	@GetMapping(value="/deleteAVATAR")
+	public String avatardeletee(@ModelAttribute("booking") Booking booking,@ModelAttribute("avatar") Avatar avatar,@RequestParam("id") int id,Model model){
+		
+		Avatar avatar1=avatarRepository.findById(id);
+		
+		int a=bookingRepository.countnbreAva(avatar1.getEmail());
+		if (a==0)
+		{
+			avatarRepository.deleteById(id);
+			
+		
+		}else 
+		{
+			model.addAttribute("message", "Impossible to delete this avatar because of a reservation in progress");
+			//return "redirect:/admin/Alert";
+		}
+		return "redirect:/admin/avatarAdmin";
+		
+	}
+	
+	
+	
+	
+/*-----------------------------deleteUSER-----------------------*/
+
+	
+	@GetMapping(value="/deleteUSER")
+	public String userdeletee(@ModelAttribute("booking") Booking booking,@ModelAttribute("user") User user,@RequestParam("id") int id,Model model){
+		
+		
+		User user1=userRepository.findById(id);
+		
+		
+		int a=bookingRepository.countnbreAva1(user1.getEmail());
+		if (a==0)
+		{ 
+			
+	
+			userRepository.deleteById(id);
+			
+			
+		
+			
+	
+		
+		}else 
+		{
+			
+			model.addAttribute("message", "Impossible to delete this user because of a reservation in progress");
+			
+		}
+		return "redirect:/admin/userAdmin";
+		
 	}
 	
 	

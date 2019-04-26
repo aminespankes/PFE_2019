@@ -52,6 +52,12 @@ public class BookingServiceImp implements BookingService {
 		
 	}
 
+	@Override
+	public void deleteEmailUser(String emailuser) {
+		bookingRepository.deleteByemailuser(emailuser);
+		
+	}
+
 	
 
 	

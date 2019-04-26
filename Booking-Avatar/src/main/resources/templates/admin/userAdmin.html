@@ -139,7 +139,7 @@
 							</div>
 						
 					</form>
-						
+				<Strong th:text="${message}"></Strong>		
 		    </div>
 		    <div class="row">
 		    	
@@ -170,9 +170,9 @@
 										    
 										    <td>
 										        
-										         <a  class='btn btn-success btn-circle' th:href="@{/ViewUser(id=${persone.id})}"><span  aria-hidden="true">VIEW</span></a>
+										         <a  class="btn btn-sm btn-success" th:href="@{/ViewUser(id=${persone.id})}"><span  aria-hidden="true">VIEW</span></a>
 										       
-										        
+										        <a  class="btn btn-sm btn-danger" th:href="@{/deleteUSER(id=${persone.id})}"><span   aria-hidden="true">DELETE</span></a>
 										        
 										    </td>
 										  </tr>

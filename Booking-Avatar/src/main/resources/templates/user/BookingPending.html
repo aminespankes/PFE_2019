@@ -202,7 +202,7 @@
 										    
 										     <th>Start Time</th>
 										      <th>End Time</th>
-										    
+										    <th>Description Of Mission</th>
 										    <th>Action</th>
 										  </tr>
 										  <th:block th:each="booking : ${pending}">
@@ -214,6 +214,7 @@
 										  
 										    <td th:text="${booking.starttime}"></td>
 										   <td th:text="${booking.endtime}"></td>
+										   <td th:text="${booking.description}"></td>
 										  
 										    
 										    <td>

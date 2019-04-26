@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Persone {
@@ -19,33 +24,45 @@ public class Persone {
 	@Column(name = "user_id")
 	private int id;
 	
+	@NotNull(message="Please enter an photo")
 	@Column(name = "image")
 	 private String image; 
 	
-	 
+	@NotNull
+	 @Size(min=2,max=20, message=" Name must be between 2 and 30 characters")
 	 @Column(name = "name")
 	 private String name; 
 	
-	
+	@NotNull
+	@Size(min=3,max=20,message=" UserName must be between 3 and 30 characters")
 	 @Column(name = "username",unique=true)
 	 private String username;
 	 
+	@NotNull
+	
 	 @Column(name = "date")
 	 private String date;
 	 
 	
+	
+	 
+	 @NotNull
+	    @Pattern(regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", message="Email address is invalid")
 		@Column(name = "email",unique=true)
 		 private String email;
-	 
+	
+
 	 @Column(name = "password")
 	 private String password;
 	 
 	 @Column(name = "country")
 	 private String country;
 	 
+	 @Size(min=4,max=20,message=" Verified your city")
 	 @Column(name = "city")
 	 private String city;
 	 
+	 @Size(min=4,max=20,message=" Verified your street")
 	 @Column(name = "street")
 	 private String street;
 	 

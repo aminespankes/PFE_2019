@@ -1,6 +1,10 @@
 package com.example.demo.controller;
 
 import java.security.Principal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,11 +57,13 @@ public class BookingController {
 							
 		/*----------------notification---------------*/
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
 		
 		Principal principal= request.getUserPrincipal();
 		User user = userAdminService.findUserByEmail(auth.getName());
 		modelAndView.addObject("username", user.getUsername());
-		modelAndView.addObject("pending" , bookingRepository.find(principal.getName()));
+		modelAndView.addObject("pending" , bookingRepository.find(principal.getName(),date));
 		List<Integer>iddd=bookingRepository.boo(principal.getName());
 		
 		for(int i = 0 ; i < iddd.size(); i++)
@@ -94,6 +100,9 @@ public class BookingController {
 	@PostMapping("/user/BookingPending")
 	public ModelAndView createNewPersone(@ModelAttribute("booking") Booking booking, BindingResult bindingResult,HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
 		Principal principal= request.getUserPrincipal();
 		User user=userRepository.findByEmail(principal.getName());
 		booking.setEmailuser(user.getEmail());
@@ -106,9 +115,9 @@ public class BookingController {
 			
 			modelAndView.addObject("booking", new Booking());
 			
-			modelAndView.addObject("pending" , bookingRepository.find(principal.getName()));
+			modelAndView.addObject("pending" , bookingRepository.find(principal.getName(),date));
 			
-		
+			modelAndView.setViewName("/user/BookingPending");
 		return modelAndView;
 	}
 	
@@ -130,13 +139,50 @@ public class BookingController {
 		modelAndView.addObject("msgnoti1" , "Reservation Canceled");//notif
 
 	    
-		
-		
-		
-		
-	    
+	
 		return modelAndView;
 		
+	}
+	
+	/*--------------------------------Booking Paiements-------------------------------*/
+	@GetMapping("/user/payment")
+	public ModelAndView bookingPaiements(@ModelAttribute("booking") Booking booking,HttpServletRequest request,@RequestParam("id") int id){
+		ModelAndView modelAndView = new ModelAndView();
+		
+		
+		/* pour le notification*/
+		Principal principal= request.getUserPrincipal();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userAdminService.findUserByEmail(auth.getName());//username online
+		modelAndView.addObject("username", user.getUsername());//username online
+		
+		modelAndView.addObject("confirmer" , bookingRepository.find3(principal.getName()));//reservation pour confiremr
+		modelAndView.addObject("countnotif" , bookingRepository.countnotif(principal.getName()));//countnbre de noti
+		modelAndView.addObject("msgnoti" , "Confirm Your Reservation");//notif
+		modelAndView.addObject("msgnoti1" , "Reservation Canceled");//notif
+
+	    modelAndView.addObject("user", userRepository.findByEmail(principal.getName()));
+	    modelAndView.addObject("booking", bookingRepository.getOne(id));
+	    
+	    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		
+		 modelAndView.addObject("date",dateFormat.format(date));
+	    
+	    
+	    
+		modelAndView.setViewName("/user/payment");
+		return modelAndView;
+		
+	}
+	/*------------------Confirmer payment ------------*/
+	@GetMapping("/user/paymentValider")
+	public String paymentValider(@RequestParam("id") int id,@ModelAttribute("booking") Booking b) {
+		
+		 Booking booking=bookingService.getBookingById(b.getId());
+			booking.setPayement(1);
+			bookingService.saveBooking(booking);
+	    return "redirect:/user/bookingUser";       
 	}
 	
 	

@@ -1,21 +1,16 @@
 package com.example.demo.configuration;
 
 
-
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,16 +40,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Autowired
 	PersoneRepository personeRepository;
 	
-	@Value("${spring.queries.users-query}")
+	
+@Value("${spring.queries.users-query}")
 	private String usersQuery;
 	
 	@Value("${spring.queries.roles-query}")
 	private String rolesQuery;
 	
-	
 
 	@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		
 	List<com.example.demo.model.Admin> admins =adminrepository.findAll();
 	 for (com.example.demo.model.Admin admin : admins) {
         auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
@@ -82,13 +78,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
             
     }
 	 
-	 
-	 
-   
-	
-	
-	
-	
+
 	}
 	
 
